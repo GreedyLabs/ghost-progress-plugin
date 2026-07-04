@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ghost-progress-plugin: Ghost용 읽기 진행 바 · 설정 &amp; 데모</title>
+    <meta name="description" content="Ghost 블로그에 코드 한 줄로 붙이는 읽기 진행 바. 옵션을 바꿔 실시간 미리보고 임베드 코드를 복사하세요. 오픈소스(MIT).">
+    <meta name="author" content="GreedyLabs">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ghost-progress-plugin.greedylabs.kr/ko/">
+    <meta name="theme-color" content="#1a73e8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a73e8'/%3E%3Cg fill='white'%3E%3Crect x='8' y='9' width='12' height='2.5' rx='1.25'/%3E%3Crect x='8' y='15' width='16' height='2.5' rx='1.25'/%3E%3Crect x='8' y='21' width='10' height='2.5' rx='1.25'/%3E%3C/g%3E%3C/svg%3E">
+
+    <!-- Set the theme before paint to avoid a flash (system unless the user chose one) -->
+    <script>
+      (function () {
+        try {
+          var m = localStorage.getItem('gprog-theme') || 'system';
+          var dark = m === 'dark' || (m === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="alternate" hreflang="ko" href="https://ghost-progress-plugin.greedylabs.kr/ko/">
+    <link rel="alternate" hreflang="en" href="https://ghost-progress-plugin.greedylabs.kr/en/">
+    <link rel="alternate" hreflang="ja" href="https://ghost-progress-plugin.greedylabs.kr/ja/">
+    <link rel="alternate" hreflang="zh" href="https://ghost-progress-plugin.greedylabs.kr/zh/">
+    <link rel="alternate" hreflang="es" href="https://ghost-progress-plugin.greedylabs.kr/es/">
+    <link rel="alternate" hreflang="fr" href="https://ghost-progress-plugin.greedylabs.kr/fr/">
+    <link rel="alternate" hreflang="de" href="https://ghost-progress-plugin.greedylabs.kr/de/">
+    <link rel="alternate" hreflang="pt" href="https://ghost-progress-plugin.greedylabs.kr/pt/">
+    <link rel="alternate" hreflang="hi" href="https://ghost-progress-plugin.greedylabs.kr/hi/">
+    <link rel="alternate" hreflang="x-default" href="https://ghost-progress-plugin.greedylabs.kr/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ghost-progress-plugin">
+    <meta property="og:title" content="ghost-progress-plugin: Ghost용 읽기 진행 바 · 설정 &amp; 데모">
+    <meta property="og:description" content="Ghost 블로그에 코드 한 줄로 붙이는 읽기 진행 바. 옵션을 바꿔 실시간 미리보고 임베드 코드를 복사하세요. 오픈소스(MIT).">
+    <meta property="og:url" content="https://ghost-progress-plugin.greedylabs.kr/ko/">
+    <meta property="og:image" content="https://ghost-progress-plugin.greedylabs.kr/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ghost-progress-plugin: Ghost용 읽기 진행 바 · 설정 &amp; 데모">
+    <meta name="twitter:description" content="Ghost 블로그에 코드 한 줄로 붙이는 읽기 진행 바. 옵션을 바꿔 실시간 미리보고 임베드 코드를 복사하세요. 오픈소스(MIT).">
+    <meta name="twitter:image" content="https://ghost-progress-plugin.greedylabs.kr/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ghost-progress-plugin",
+          "description": "Ghost 블로그에 코드 한 줄로 붙이는 읽기 진행 바. 옵션을 바꿔 실시간 미리보고 임베드 코드를 복사하세요. 오픈소스(MIT).",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web (Ghost, Notion)",
+          "softwareVersion": "1",
+          "url": "https://ghost-progress-plugin.greedylabs.kr/ko/",
+          "codeRepository": "https://github.com/GreedyLabs/ghost-progress-plugin",
+          "license": "https://opensource.org/licenses/MIT",
+          "author": {
+            "@type": "Organization",
+            "name": "GreedyLabs",
+            "url": "https://github.com/GreedyLabs"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "sameAs": [
+            "https://github.com/GreedyLabs/ghost-progress-plugin"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "ghost-progress-plugin",
+          "url": "https://ghost-progress-plugin.greedylabs.kr/",
+          "inLanguage": "ko",
+          "publisher": {
+            "@type": "Organization",
+            "name": "GreedyLabs",
+            "url": "https://github.com/GreedyLabs"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Warm up third-party origins before the render-blocking font CSS -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://umami.greedylabs.kr">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css">
+    <link rel="stylesheet" href="/progress.css">
+    <link rel="stylesheet" href="/demo.css">
+
+    <script defer src="https://umami.greedylabs.kr/script.js"
+            data-website-id="ffcc7476-be44-4af2-8a9a-4a232dc31a0d"></script>
+</head>
+<body>
+    <aside class="panel">
+        <h1>ghost-progress-plugin</h1>
+        <div class="panel-meta">
+            <div class="field row">
+                <div>
+                    <label for="lang-select">언어</label>
+                    <select id="lang-select">
+                    <option value="/ko/" selected>한국어</option>
+                    <option value="/en/">English</option>
+                    <option value="/ja/">日本語</option>
+                    <option value="/zh/">中文</option>
+                    <option value="/es/">Español</option>
+                    <option value="/fr/">Français</option>
+                    <option value="/de/">Deutsch</option>
+                    <option value="/pt/">Português</option>
+                    <option value="/hi/">हिन्दी</option>
+                </select>
+                </div>
+                <div>
+                    <label for="theme-select">테마</label>
+                    <select id="theme-select">
+                    <option value="system">시스템</option>
+                    <option value="light">라이트</option>
+                    <option value="dark">다크</option>
+                </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="f-content">본문 선택자 <span style="font-weight:400;color:var(--ui-muted)">(코드용 · 미리보기는 데모 본문)</span></label>
+            <input type="text" id="f-content" value=".gh-content">
+            <div class="presets">
+                <button type="button" class="preset" data-content=".gh-content">Ghost</button>
+                <button type="button" class="preset" data-content=".notion-page-content">Notion</button>
+            </div>
+        </div>
+        <div class="field">
+            <label for="f-position">위치</label>
+            <select id="f-position">
+                <option value="top" selected>위</option>
+                <option value="bottom">아래</option>
+            </select>
+        </div>
+
+        <div class="field check">
+            <input type="checkbox" id="f-useThemeColor" checked>
+            <label for="f-useThemeColor">Ghost 테마 강조색 자동 사용</label>
+        </div>
+        <div class="field">
+            <label for="f-color">바 색상</label>
+            <input type="color" id="f-color" value="#1a73e8" disabled>
+        </div>
+
+        <div class="field row">
+            <div><label for="f-height">두께(px)</label><input type="number" id="f-height" value="4" step="1" min="1"></div>
+            <div><label for="f-zindex">z-index</label><input type="number" id="f-zindex" value="100" step="10"></div>
+        </div>
+
+        <div class="code">
+            <div class="code-head"><strong>임베드 코드</strong><button class="copy" id="copy">복사</button></div>
+            <pre><code id="snippet"></code></pre>
+        </div>
+
+        <div class="panel-support">
+            <p>도움이 되었다면 커피 한 잔 어때요? ☕</p>
+            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="daeho.ro" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+        </div>
+    </aside>
+
+    <div class="demo-hero">대표 이미지(feature image) 영역, 진행 바는 이 아래 본문 기준입니다</div>
+
+    <article class="demo-article">
+        <h1>ghost-progress-plugin 미리보기</h1>
+        <p>스크롤하면 상단 바가 0%에서 100%로 채워집니다. 왼쪽 패널에서 옵션을 바꾸면 임베드 코드도 함께 갱신됩니다.</p>
+
+        <h2>들어가며</h2>
+        <p>ghost-progress-plugin은 Ghost용의 가볍고 의존성 없는 읽기 진행 바입니다. Ghost 전용으로 시작했지만, Notion 기반 블로그에서도 동작하며 스크립트를 넣을 수 있는 곳이면 어디서나 동작합니다. 읽는 동안 얇은 바가 채워져 글의 어디쯤인지 보여줍니다. 이 페이지가 바로 그 예시로, 상단의 바가 실제로 동작하는 위젯입니다.</p>
+
+        <h2>설치 방법</h2>
+        <p>빌드 과정도, 테마 파일 수정도 없이 아래 스니펫 한 번이면 설치가 끝납니다:</p>
+        <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GreedyLabs/ghost-progress-plugin@1/progress.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/GreedyLabs/ghost-progress-plugin@1/progress.min.js"
+        data-content=".gh-content"
+        data-position="top"&gt;&lt;/script&gt;</code></pre>
+        <h3>코드 인젝션</h3>
+        <p>Ghost에서는 Settings → Code injection → Site Footer 에 붙여넣습니다. Notion 기반 호스팅이라면 커스텀 코드 주입란에 넣습니다. oopy는 사이트 설정의 head/footer 코드란, super.so는 Custom Code 영역이며, 이때 data-content를 .notion-page-content로 지정하세요. 그 밖의 사이트라면 닫는 &lt;/body&gt; 태그 바로 앞에 두면 됩니다.</p>
+        <h3>옵션 설정</h3>
+        <p>동작은 모두 스크립트 태그의 data-* 속성으로 설정합니다: 본문 선택자, 위치, 두께, z-index를 지정할 수 있습니다:</p>
+        <pre><code>data-content=".gh-content"
+data-position="top"
+data-height="4"
+data-z-index="100"</code></pre>
+
+        <h2>커스터마이즈</h2>
+        <p>바의 색과 두께는 자유롭게 조절할 수 있습니다. 모든 클래스와 CSS 변수는 greedylabs-ghost-progress로 네임스페이스가 걸려 있어 테마와 절대 충돌하지 않습니다.</p>
+        <h3>색상</h3>
+        <p>채움 색은 기본적으로 Ghost 테마 강조색(--ghost-accent-color)을 따릅니다. 바꾸려면 data-color를 주거나 CSS 변수를 덮어쓰면 됩니다. 읽지 않은 부분의 트랙은 기본이 투명이니, 0%에서도 바가 보이게 하려면 트랙에 색을 주세요:</p>
+        <pre><code>.greedylabs-ghost-progress {
+  --greedylabs-ghost-progress-track: rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme: dark) {
+  .greedylabs-ghost-progress {
+    --greedylabs-ghost-progress-track: rgba(255,255,255,.14);
+  }
+}</code></pre>
+        <h3>위치</h3>
+        <p>data-position으로 위/아래를, data-height로 두께(px)를 정합니다. 바는 글 상단이 뷰포트 위에 닿으면 0%, 글 하단이 뷰포트 바닥에 닿으면 100%가 됩니다.</p>
+
+        <h2>자주 묻는 질문</h2>
+        <!-- Questions are h4 so they stay out of the h2/h3 demo TOC -->
+        <h4>전체 페이지 기준인가요, 본문 기준인가요?</h4>
+        <p>data-content로 가리킨 본문 기준입니다. 헤더, 대표 이미지, 푸터는 진행률에 포함되지 않습니다.</p>
+        <h4>맨 위에서 바가 안 보여요.</h4>
+        <p>0%에서는 채움 폭이 0이고 트랙이 기본 투명이라 그렇습니다. 트랙에 색을 주면(색상 섹션 참고) 비어 있어도 바가 보입니다.</p>
+        <h4>Ghost가 아니어도 되나요?</h4>
+        <p>됩니다. 스크립트를 넣을 수 있는 곳이면 data-content로 본문 컨테이너만 가리키면 됩니다. Notion은 .notion-page-content입니다.</p>
+
+        <h2>마치며</h2>
+        <p>ghost-progress-plugin은 MIT 라이선스 오픈소스이며, 소스와 이슈는 GitHub에 있습니다. 왼쪽 패널에서 옵션을 바꿔 확인한 뒤 마음에 들면 임베드 코드를 복사하세요. 도움이 되었다면 커피 한 잔 부탁드려요 ☕.</p>
+    </article>
+
+    <section class="demo-comments">
+        <h2 class="demo-comments-title">댓글</h2>
+        <script src="https://giscus.app/client.js"
+                data-repo="GreedyLabs/giscus-comment"
+                data-repo-id="R_kgDOTHbOrw"
+                data-category="ghost-progress-plugin.greedylabs.kr"
+                data-category-id="DIC_kwDOTHbOr84DAePj"
+                data-mapping="specific"
+                data-term="ghost-progress-plugin"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="ko"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </section>
+
+    <script src="/progress.js" data-auto="false"></script>
+    <script>window.GPROG_I18N = {"copy":"복사","copyDone":"복사됨"};</script>
+    <script src="/demo.js"></script>
+</body>
+</html>

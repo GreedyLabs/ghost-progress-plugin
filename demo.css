@@ -1,0 +1,133 @@
+/* Styles for the ghost-progress-plugin demo / configurator page only.
+   (The distributed widget styles live in progress.css.) */
+
+/* Light palette (default). JS sets data-theme="light"|"dark" on <html>; "system"
+   resolves to one of those and reacts to OS changes. We also define the widget's
+   own --greedylabs-ghost-progress-* variables here so the TOC matches the chosen theme
+   even when it differs from the OS (otherwise progress.css's prefers-color-scheme
+   media query would fight a forced theme).
+   --ghost-accent-color simulates a Ghost site so "auto accent" previews a color. */
+:root {
+    --page-bg: #ffffff;
+    --ui-bg: #ffffff;
+    --ui-subtle: #f9fafb;
+    --ui-fg: #111827;
+    --ui-muted: #6b7280;
+    --ui-border: #e5e7eb;
+    --art-fg: #444444;
+    --hero-bg: #f1f3f5;
+    --hero-fg: #adb5bd;
+    --ghost-accent-color: #3b82f6;
+
+    --greedylabs-ghost-progress-fg: #15171a;
+    --greedylabs-ghost-progress-muted: rgba(0, 0, 0, 0.55);
+    --greedylabs-ghost-progress-border: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="dark"] {
+    --page-bg: #17181c;
+    --ui-bg: #232429;
+    --ui-subtle: #2b2c32;
+    --ui-fg: #e8eaed;
+    --ui-muted: #9aa0a6;
+    --ui-border: #34353b;
+    --art-fg: #c4c7cd;
+    --hero-bg: #232429;
+    --hero-fg: #6b7280;
+    --ghost-accent-color: #60a5fa;
+
+    --greedylabs-ghost-progress-fg: #ffffff;
+    --greedylabs-ghost-progress-muted: rgba(255, 255, 255, 0.64);
+    --greedylabs-ghost-progress-border: rgba(255, 255, 255, 0.15);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ui-fg); background: var(--page-bg); line-height: 1.7;
+    transition: background-color .2s ease, color .2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+
+/* control panel floats over a margin; it moves to the side OPPOSITE the TOC */
+.panel {
+    position: fixed; left: 16px; top: 16px; width: 300px;
+    max-height: calc(100vh - 32px); overflow: auto; z-index: 1000;
+    background: var(--ui-bg); border: 1px solid var(--ui-border); border-radius: 12px;
+    padding: 16px; box-shadow: 0 6px 24px rgba(0,0,0,.08); font-size: 13px;
+}
+.panel.panel--right { left: auto; right: 16px; }
+.panel h1 { font-size: 15px; margin: 0 0 12px; }
+.panel .sub { color: var(--ui-muted); font-size: 12px; margin: 0 0 14px; }
+
+/* language + theme — not widget options, so grouped at the top (labelled like the
+   other fields) with a divider below to separate them from the configurator */
+.panel-meta { margin: 0 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--ui-border); }
+.panel-meta .field.row { margin-bottom: 0; }
+
+.field { margin-bottom: 11px; }
+.field label { display: block; font-weight: 600; margin-bottom: 4px; }
+.field input[type=text], .field input[type=number], .field select {
+    width: 100%; padding: 6px 8px; border: 1px solid var(--ui-border);
+    border-radius: 7px; font: inherit; font-size: 13px;
+    background: var(--ui-bg); color: var(--ui-fg);
+}
+/* one-click presets that fill the content selector for a given platform */
+.presets { display: flex; gap: 6px; margin-top: 6px; }
+.preset { font: inherit; font-size: 11px; padding: 3px 8px; cursor: pointer;
+    border: 1px solid var(--ui-border); border-radius: 6px;
+    background: var(--ui-subtle); color: var(--ui-muted); }
+.preset:hover { color: var(--ui-fg); }
+.field.row { display: flex; gap: 8px; align-items: flex-end; }
+.field.row > div { flex: 1; }
+.field.check { display: flex; align-items: center; gap: 8px; }
+.field.check label { margin: 0; font-weight: 600; }
+input[type=color] { width: 100%; height: 32px; padding: 2px; border: 1px solid var(--ui-border); border-radius: 7px; background: var(--ui-bg); }
+input[type=color]:disabled { opacity: .4; }
+
+.code { margin-top: 14px; }
+.code-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.code-head strong { font-size: 12px; }
+.copy { font: inherit; font-size: 12px; padding: 4px 10px; border: 1px solid var(--ui-border);
+    background: var(--ui-subtle); color: var(--ui-fg); border-radius: 7px; cursor: pointer; }
+.copy:hover { filter: brightness(0.97); }
+.copy.ok { background: #ecfdf5; border-color: #a7f3d0; color: #047857; }
+pre { margin: 0; background: #0f172a; color: #e2e8f0; padding: 12px; border-radius: 8px;
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 12.5px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: auto; white-space: pre; }
+.hint { color: var(--ui-muted); font-size: 11.5px; margin-top: 8px; }
+
+/* Support / donation call-to-action at the bottom of the control panel, with a
+   divider above to separate it from the configurator. The Buy Me a Coffee script
+   injects its own <a> button after the script tag. */
+.panel-support { margin-top: 16px; padding-top: 16px; text-align: center;
+    border-top: 1px solid var(--ui-border); }
+/* same family/size/color as the panel's other secondary text (.hint, .sub) */
+.panel-support p { margin: 0 0 10px; font-size: 11.5px; line-height: 1.5;
+    color: var(--ui-muted); white-space: nowrap; }
+.panel-support a, .panel-support img { max-width: 100%; vertical-align: middle; }
+
+/* Demo-only: a faint track so the reading bar is visible even at 0% */
+.greedylabs-ghost-progress { --greedylabs-ghost-progress-track: rgba(0,0,0,.08); }
+:root[data-theme="dark"] .greedylabs-ghost-progress { --greedylabs-ghost-progress-track: rgba(255,255,255,.14); }
+
+.demo-hero { max-width: 1080px; margin: 24px auto 0; height: 340px; border-radius: 14px;
+    background: var(--hero-bg); color: var(--hero-fg); border: 1px solid var(--ui-border);
+    display: flex; align-items: center; justify-content: center; font-weight: 500; letter-spacing: .02em; }
+.demo-article { max-width: 720px; margin: 40px auto 48px; padding: 0 24px; }
+.demo-article h1 { font-size: 2.2rem; }
+.demo-article h2 { margin-top: 2.4em; font-size: 1.6rem; }
+.demo-article h3 { margin-top: 1.6em; font-size: 1.25rem; }
+.demo-article p { margin: 1em 0; color: var(--art-fg); }
+.demo-article pre { margin: 1.2em 0; }
+
+/* Comments — same column width as the article so the layout stays aligned.
+   giscus injects a .giscus container holding the .giscus-frame iframe. */
+.demo-comments { max-width: 720px; margin: 0 auto; padding: 24px 24px 120px; border-top: 1px solid var(--ui-border); }
+.demo-comments-title { font-size: 1.4rem; margin: 0 0 16px; }
+.demo-comments .giscus,
+.demo-comments .giscus-frame { width: 100%; }
+
+@media (max-width: 1100px) {
+    .panel, .panel.panel--right { position: static; width: auto; max-height: none; margin: 16px; box-shadow: none; }
+    .demo-article { margin-top: 16px; }
+}

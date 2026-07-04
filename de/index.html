@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ghost-progress-plugin: Lesefortschrittsbalken für Ghost · Konfigurator &amp; Demo</title>
+    <meta name="description" content="Füge deinem Ghost-Blog mit einer Zeile Code einen Lesefortschrittsbalken hinzu. Optionen anpassen, live vorschauen, Snippet kopieren. Open Source (MIT).">
+    <meta name="author" content="GreedyLabs">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ghost-progress-plugin.greedylabs.kr/de/">
+    <meta name="theme-color" content="#1a73e8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a73e8'/%3E%3Cg fill='white'%3E%3Crect x='8' y='9' width='12' height='2.5' rx='1.25'/%3E%3Crect x='8' y='15' width='16' height='2.5' rx='1.25'/%3E%3Crect x='8' y='21' width='10' height='2.5' rx='1.25'/%3E%3C/g%3E%3C/svg%3E">
+
+    <!-- Set the theme before paint to avoid a flash (system unless the user chose one) -->
+    <script>
+      (function () {
+        try {
+          var m = localStorage.getItem('gprog-theme') || 'system';
+          var dark = m === 'dark' || (m === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="alternate" hreflang="ko" href="https://ghost-progress-plugin.greedylabs.kr/ko/">
+    <link rel="alternate" hreflang="en" href="https://ghost-progress-plugin.greedylabs.kr/en/">
+    <link rel="alternate" hreflang="ja" href="https://ghost-progress-plugin.greedylabs.kr/ja/">
+    <link rel="alternate" hreflang="zh" href="https://ghost-progress-plugin.greedylabs.kr/zh/">
+    <link rel="alternate" hreflang="es" href="https://ghost-progress-plugin.greedylabs.kr/es/">
+    <link rel="alternate" hreflang="fr" href="https://ghost-progress-plugin.greedylabs.kr/fr/">
+    <link rel="alternate" hreflang="de" href="https://ghost-progress-plugin.greedylabs.kr/de/">
+    <link rel="alternate" hreflang="pt" href="https://ghost-progress-plugin.greedylabs.kr/pt/">
+    <link rel="alternate" hreflang="hi" href="https://ghost-progress-plugin.greedylabs.kr/hi/">
+    <link rel="alternate" hreflang="x-default" href="https://ghost-progress-plugin.greedylabs.kr/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ghost-progress-plugin">
+    <meta property="og:title" content="ghost-progress-plugin: Lesefortschrittsbalken für Ghost · Konfigurator &amp; Demo">
+    <meta property="og:description" content="Füge deinem Ghost-Blog mit einer Zeile Code einen Lesefortschrittsbalken hinzu. Optionen anpassen, live vorschauen, Snippet kopieren. Open Source (MIT).">
+    <meta property="og:url" content="https://ghost-progress-plugin.greedylabs.kr/de/">
+    <meta property="og:image" content="https://ghost-progress-plugin.greedylabs.kr/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ghost-progress-plugin: Lesefortschrittsbalken für Ghost · Konfigurator &amp; Demo">
+    <meta name="twitter:description" content="Füge deinem Ghost-Blog mit einer Zeile Code einen Lesefortschrittsbalken hinzu. Optionen anpassen, live vorschauen, Snippet kopieren. Open Source (MIT).">
+    <meta name="twitter:image" content="https://ghost-progress-plugin.greedylabs.kr/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ghost-progress-plugin",
+          "description": "Füge deinem Ghost-Blog mit einer Zeile Code einen Lesefortschrittsbalken hinzu. Optionen anpassen, live vorschauen, Snippet kopieren. Open Source (MIT).",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web (Ghost, Notion)",
+          "softwareVersion": "1",
+          "url": "https://ghost-progress-plugin.greedylabs.kr/de/",
+          "codeRepository": "https://github.com/GreedyLabs/ghost-progress-plugin",
+          "license": "https://opensource.org/licenses/MIT",
+          "author": {
+            "@type": "Organization",
+            "name": "GreedyLabs",
+            "url": "https://github.com/GreedyLabs"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "sameAs": [
+            "https://github.com/GreedyLabs/ghost-progress-plugin"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "ghost-progress-plugin",
+          "url": "https://ghost-progress-plugin.greedylabs.kr/",
+          "inLanguage": "de",
+          "publisher": {
+            "@type": "Organization",
+            "name": "GreedyLabs",
+            "url": "https://github.com/GreedyLabs"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Warm up third-party origins before the render-blocking font CSS -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://umami.greedylabs.kr">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css">
+    <link rel="stylesheet" href="/progress.css">
+    <link rel="stylesheet" href="/demo.css">
+
+    <script defer src="https://umami.greedylabs.kr/script.js"
+            data-website-id="ffcc7476-be44-4af2-8a9a-4a232dc31a0d"></script>
+</head>
+<body>
+    <aside class="panel">
+        <h1>ghost-progress-plugin</h1>
+        <div class="panel-meta">
+            <div class="field row">
+                <div>
+                    <label for="lang-select">Sprache</label>
+                    <select id="lang-select">
+                    <option value="/ko/">한국어</option>
+                    <option value="/en/">English</option>
+                    <option value="/ja/">日本語</option>
+                    <option value="/zh/">中文</option>
+                    <option value="/es/">Español</option>
+                    <option value="/fr/">Français</option>
+                    <option value="/de/" selected>Deutsch</option>
+                    <option value="/pt/">Português</option>
+                    <option value="/hi/">हिन्दी</option>
+                </select>
+                </div>
+                <div>
+                    <label for="theme-select">Theme</label>
+                    <select id="theme-select">
+                    <option value="system">System</option>
+                    <option value="light">Hell</option>
+                    <option value="dark">Dunkel</option>
+                </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="f-content">Inhalts-Selektor <span style="font-weight:400;color:var(--ui-muted)">(für den Code · Vorschau nutzt den Demo-Inhalt)</span></label>
+            <input type="text" id="f-content" value=".gh-content">
+            <div class="presets">
+                <button type="button" class="preset" data-content=".gh-content">Ghost</button>
+                <button type="button" class="preset" data-content=".notion-page-content">Notion</button>
+            </div>
+        </div>
+        <div class="field">
+            <label for="f-position">Position</label>
+            <select id="f-position">
+                <option value="top" selected>Oben</option>
+                <option value="bottom">Unten</option>
+            </select>
+        </div>
+
+        <div class="field check">
+            <input type="checkbox" id="f-useThemeColor" checked>
+            <label for="f-useThemeColor">Akzentfarbe des Ghost-Themes automatisch verwenden</label>
+        </div>
+        <div class="field">
+            <label for="f-color">Balkenfarbe</label>
+            <input type="color" id="f-color" value="#1a73e8" disabled>
+        </div>
+
+        <div class="field row">
+            <div><label for="f-height">Dicke (px)</label><input type="number" id="f-height" value="4" step="1" min="1"></div>
+            <div><label for="f-zindex">Z-Index</label><input type="number" id="f-zindex" value="100" step="10"></div>
+        </div>
+
+        <div class="code">
+            <div class="code-head"><strong>Einbettungscode</strong><button class="copy" id="copy">Kopieren</button></div>
+            <pre><code id="snippet"></code></pre>
+        </div>
+
+        <div class="panel-support">
+            <p>Hilfreich? Spendier mir einen Kaffee ☕</p>
+            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="daeho.ro" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+        </div>
+    </aside>
+
+    <div class="demo-hero">Beitragsbild-Bereich. Der Balken misst den Artikel darunter, nicht dieses Bild.</div>
+
+    <article class="demo-article">
+        <h1>ghost-progress-plugin Vorschau</h1>
+        <p>Scrolle und sieh zu, wie sich der Balken oben von 0% auf 100% füllt. Ändere Optionen im linken Panel, der Einbettungscode aktualisiert sich mit.</p>
+
+        <h2>Einführung</h2>
+        <p>ghost-progress-plugin ist ein winziger, abhängigkeitsfreier Lesefortschrittsbalken für Ghost. Es begann als Widget für Ghost, funktioniert aber auch in Notion-basierten Blogs und überall, wo du ein Skript einbinden kannst. Beim Lesen füllt sich ein dünner Balken und zeigt, wie weit du im Artikel bist. Diese Seite ist ein Live-Beispiel: Der Balken oben ist das echte Widget.</p>
+
+        <h2>Installation</h2>
+        <p>Einmal mit diesem Snippet einbinden, ohne Build-Schritt und ohne Theme-Dateien zu bearbeiten:</p>
+        <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GreedyLabs/ghost-progress-plugin@1/progress.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/GreedyLabs/ghost-progress-plugin@1/progress.min.js"
+        data-content=".gh-content"
+        data-position="top"&gt;&lt;/script&gt;</code></pre>
+        <h3>Code-Injection</h3>
+        <p>Füge es in Ghost unter Settings → Code injection → Site Footer ein. Auf Notion-basiertem Hosting fügst du es im Feld für eigenen Code ein: oopy hat ein head/footer-Codefeld, super.so hat einen Custom-Code-Bereich, und dort setzt du data-content auf .notion-page-content. Auf jeder anderen Seite platzierst du es direkt vor dem schließenden &lt;/body&gt;-Tag.</p>
+        <h3>Optionen</h3>
+        <p>Alles wird über data-*-Attribute am Script-Tag konfiguriert: der Inhalts-Selektor, die Position, die Dicke und der Z-Index:</p>
+        <pre><code>data-content=".gh-content"
+data-position="top"
+data-height="4"
+data-z-index="100"</code></pre>
+
+        <h2>Anpassung</h2>
+        <p>Farbe und Dicke des Balkens sind anpassbar. Jede Klasse und CSS-Variable ist unter greedylabs-ghost-progress benannt, sodass er nie mit deinem Theme kollidiert.</p>
+        <h3>Farben</h3>
+        <p>Die Füllung folgt standardmäßig der Akzentfarbe deines Ghost-Themes (--ghost-accent-color); setze data-color oder überschreibe die CSS-Variablen, um sie zu ändern. Die ungelesene Spur ist standardmäßig transparent, gib ihr also eine Farbe, damit der Balken auch bei 0% sichtbar ist:</p>
+        <pre><code>.greedylabs-ghost-progress {
+  --greedylabs-ghost-progress-track: rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme: dark) {
+  .greedylabs-ghost-progress {
+    --greedylabs-ghost-progress-track: rgba(255,255,255,.14);
+  }
+}</code></pre>
+        <h3>Position</h3>
+        <p>Nutze data-position für oben oder unten und data-height für die Dicke in Pixeln. Der Balken erreicht 0%, wenn der obere Rand des Artikels den oberen Rand des Viewports erreicht, und 100%, wenn sein unterer Rand den unteren erreicht.</p>
+
+        <h2>Häufige Fragen</h2>
+        <!-- Questions are h4 so they stay out of the h2/h3 demo TOC -->
+        <h4>Misst es die ganze Seite oder nur den Artikel?</h4>
+        <p>Nur den Artikel, auf den data-content zeigt. Header, Beitragsbild und Footer zählen nicht zum Fortschritt.</p>
+        <h4>Warum ist der Balken oben unsichtbar?</h4>
+        <p>Bei 0% hat die Füllung keine Breite und die Spur ist standardmäßig transparent. Gib der Spur eine Farbe (siehe Farben), damit der Balken auch leer sichtbar ist.</p>
+        <h4>Funktioniert es außerhalb von Ghost?</h4>
+        <p>Ja. Überall, wo du ein Skript einbinden kannst, zeige mit data-content auf deinen Artikel-Container. Bei Notion ist das .notion-page-content.</p>
+
+        <h2>Fazit</h2>
+        <p>ghost-progress-plugin ist Open Source unter der MIT-Lizenz; Code und Issues findest du auf GitHub. Probiere die Optionen im linken Panel aus und kopiere das Snippet, wenn es passt. Wenn es dir geholfen hat, freue ich mich über einen Kaffee ☕.</p>
+    </article>
+
+    <section class="demo-comments">
+        <h2 class="demo-comments-title">Kommentare</h2>
+        <script src="https://giscus.app/client.js"
+                data-repo="GreedyLabs/giscus-comment"
+                data-repo-id="R_kgDOTHbOrw"
+                data-category="ghost-progress-plugin.greedylabs.kr"
+                data-category-id="DIC_kwDOTHbOr84DAePj"
+                data-mapping="specific"
+                data-term="ghost-progress-plugin"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="de"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </section>
+
+    <script src="/progress.js" data-auto="false"></script>
+    <script>window.GPROG_I18N = {"copy":"Kopieren","copyDone":"Kopiert"};</script>
+    <script src="/demo.js"></script>
+</body>
+</html>

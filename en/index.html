@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ghost-progress-plugin: Reading progress bar for Ghost · configurator &amp; demo</title>
+    <meta name="description" content="Add a reading progress bar to your Ghost blog with one line of code. Tweak options, preview live, and copy the embed snippet. Open source (MIT).">
+    <meta name="author" content="GreedyLabs">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ghost-progress-plugin.greedylabs.kr/en/">
+    <meta name="theme-color" content="#1a73e8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a73e8'/%3E%3Cg fill='white'%3E%3Crect x='8' y='9' width='12' height='2.5' rx='1.25'/%3E%3Crect x='8' y='15' width='16' height='2.5' rx='1.25'/%3E%3Crect x='8' y='21' width='10' height='2.5' rx='1.25'/%3E%3C/g%3E%3C/svg%3E">
+
+    <!-- Set the theme before paint to avoid a flash (system unless the user chose one) -->
+    <script>
+      (function () {
+        try {
+          var m = localStorage.getItem('gprog-theme') || 'system';
+          var dark = m === 'dark' || (m === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="alternate" hreflang="ko" href="https://ghost-progress-plugin.greedylabs.kr/ko/">
+    <link rel="alternate" hreflang="en" href="https://ghost-progress-plugin.greedylabs.kr/en/">
+    <link rel="alternate" hreflang="ja" href="https://ghost-progress-plugin.greedylabs.kr/ja/">
+    <link rel="alternate" hreflang="zh" href="https://ghost-progress-plugin.greedylabs.kr/zh/">
+    <link rel="alternate" hreflang="es" href="https://ghost-progress-plugin.greedylabs.kr/es/">
+    <link rel="alternate" hreflang="fr" href="https://ghost-progress-plugin.greedylabs.kr/fr/">
+    <link rel="alternate" hreflang="de" href="https://ghost-progress-plugin.greedylabs.kr/de/">
+    <link rel="alternate" hreflang="pt" href="https://ghost-progress-plugin.greedylabs.kr/pt/">
+    <link rel="alternate" hreflang="hi" href="https://ghost-progress-plugin.greedylabs.kr/hi/">
+    <link rel="alternate" hreflang="x-default" href="https://ghost-progress-plugin.greedylabs.kr/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ghost-progress-plugin">
+    <meta property="og:title" content="ghost-progress-plugin: Reading progress bar for Ghost · configurator &amp; demo">
+    <meta property="og:description" content="Add a reading progress bar to your Ghost blog with one line of code. Tweak options, preview live, and copy the embed snippet. Open source (MIT).">
+    <meta property="og:url" content="https://ghost-progress-plugin.greedylabs.kr/en/">
+    <meta property="og:image" content="https://ghost-progress-plugin.greedylabs.kr/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ghost-progress-plugin: Reading progress bar for Ghost · configurator &amp; demo">
+    <meta name="twitter:description" content="Add a reading progress bar to your Ghost blog with one line of code. Tweak options, preview live, and copy the embed snippet. Open source (MIT).">
+    <meta name="twitter:image" content="https://ghost-progress-plugin.greedylabs.kr/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ghost-progress-plugin",
+          "description": "Add a reading progress bar to your Ghost blog with one line of code. Tweak options, preview live, and copy the embed snippet. Open source (MIT).",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web (Ghost, Notion)",
+          "softwareVersion": "1",
+          "url": "https://ghost-progress-plugin.greedylabs.kr/en/",
+          "codeRepository": "https://github.com/GreedyLabs/ghost-progress-plugin",
+          "license": "https://opensource.org/licenses/MIT",
+          "author": {
+            "@type": "Organization",
+            "name": "GreedyLabs",
+            "url": "https://github.com/GreedyLabs"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "sameAs": [
+            "https://github.com/GreedyLabs/ghost-progress-plugin"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "ghost-progress-plugin",
+          "url": "https://ghost-progress-plugin.greedylabs.kr/",
+          "inLanguage": "en",
+          "publisher": {
+            "@type": "Organization",
+            "name": "GreedyLabs",
+            "url": "https://github.com/GreedyLabs"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Warm up third-party origins before the render-blocking font CSS -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://umami.greedylabs.kr">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css">
+    <link rel="stylesheet" href="/progress.css">
+    <link rel="stylesheet" href="/demo.css">
+
+    <script defer src="https://umami.greedylabs.kr/script.js"
+            data-website-id="ffcc7476-be44-4af2-8a9a-4a232dc31a0d"></script>
+</head>
+<body>
+    <aside class="panel">
+        <h1>ghost-progress-plugin</h1>
+        <div class="panel-meta">
+            <div class="field row">
+                <div>
+                    <label for="lang-select">Language</label>
+                    <select id="lang-select">
+                    <option value="/ko/">한국어</option>
+                    <option value="/en/" selected>English</option>
+                    <option value="/ja/">日本語</option>
+                    <option value="/zh/">中文</option>
+                    <option value="/es/">Español</option>
+                    <option value="/fr/">Français</option>
+                    <option value="/de/">Deutsch</option>
+                    <option value="/pt/">Português</option>
+                    <option value="/hi/">हिन्दी</option>
+                </select>
+                </div>
+                <div>
+                    <label for="theme-select">Theme</label>
+                    <select id="theme-select">
+                    <option value="system">System</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="f-content">Content selector <span style="font-weight:400;color:var(--ui-muted)">(for the snippet · preview uses the demo body)</span></label>
+            <input type="text" id="f-content" value=".gh-content">
+            <div class="presets">
+                <button type="button" class="preset" data-content=".gh-content">Ghost</button>
+                <button type="button" class="preset" data-content=".notion-page-content">Notion</button>
+            </div>
+        </div>
+        <div class="field">
+            <label for="f-position">Position</label>
+            <select id="f-position">
+                <option value="top" selected>Top</option>
+                <option value="bottom">Bottom</option>
+            </select>
+        </div>
+
+        <div class="field check">
+            <input type="checkbox" id="f-useThemeColor" checked>
+            <label for="f-useThemeColor">Use the Ghost theme accent automatically</label>
+        </div>
+        <div class="field">
+            <label for="f-color">Bar color</label>
+            <input type="color" id="f-color" value="#1a73e8" disabled>
+        </div>
+
+        <div class="field row">
+            <div><label for="f-height">Height (px)</label><input type="number" id="f-height" value="4" step="1" min="1"></div>
+            <div><label for="f-zindex">Z-index</label><input type="number" id="f-zindex" value="100" step="10"></div>
+        </div>
+
+        <div class="code">
+            <div class="code-head"><strong>Embed code</strong><button class="copy" id="copy">Copy</button></div>
+            <pre><code id="snippet"></code></pre>
+        </div>
+
+        <div class="panel-support">
+            <p>Found it useful? Buy me a coffee ☕</p>
+            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="daeho.ro" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+        </div>
+    </aside>
+
+    <div class="demo-hero">Feature image area. The reading bar tracks the article below, not this hero.</div>
+
+    <article class="demo-article">
+        <h1>ghost-progress-plugin preview</h1>
+        <p>Scroll and watch the bar at the top fill from 0% to 100%. Change options in the left panel and the embed code updates with them.</p>
+
+        <h2>Getting started</h2>
+        <p>ghost-progress-plugin is a tiny, dependency-free reading progress bar for Ghost. It started as a Ghost widget, but it also works on Notion-based blogs, and anywhere you can add a script. As you read, a thin bar fills to show how far through the article you are. This page is a live example: the bar at the top is the real widget.</p>
+
+        <h2>Installation</h2>
+        <p>Add it once with this snippet, no build step, no theme files to edit:</p>
+        <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GreedyLabs/ghost-progress-plugin@1/progress.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/GreedyLabs/ghost-progress-plugin@1/progress.min.js"
+        data-content=".gh-content"
+        data-position="top"&gt;&lt;/script&gt;</code></pre>
+        <h3>Code injection</h3>
+        <p>In Ghost, paste it into Settings → Code injection → Site Footer. On Notion-based hosting, add it in the custom-code field: oopy has a head/footer code box in its site settings, super.so has a Custom Code area, and there you set data-content to .notion-page-content. On any other site, put it just before the closing &lt;/body&gt; tag.</p>
+        <h3>Options</h3>
+        <p>Everything is configured with data-* attributes on the script tag: the content selector, the position, the height, and the z-index:</p>
+        <pre><code>data-content=".gh-content"
+data-position="top"
+data-height="4"
+data-z-index="100"</code></pre>
+
+        <h2>Customize</h2>
+        <p>The bar color and thickness are adjustable. Every class and CSS variable is namespaced under greedylabs-ghost-progress, so it never clashes with your theme.</p>
+        <h3>Colors</h3>
+        <p>The fill follows your Ghost theme accent (--ghost-accent-color) by default; set data-color or override the CSS variables to change it. The unread track is transparent by default, so give it a color to make the bar visible even at 0%:</p>
+        <pre><code>.greedylabs-ghost-progress {
+  --greedylabs-ghost-progress-track: rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme: dark) {
+  .greedylabs-ghost-progress {
+    --greedylabs-ghost-progress-track: rgba(255,255,255,.14);
+  }
+}</code></pre>
+        <h3>Position</h3>
+        <p>Use data-position for top or bottom, and data-height for the thickness in pixels. The bar reaches 0% when the article top meets the top of the viewport, and 100% when its bottom meets the bottom.</p>
+
+        <h2>FAQ</h2>
+        <!-- Questions are h4 so they stay out of the h2/h3 demo TOC -->
+        <h4>Does it track the whole page or just the article?</h4>
+        <p>Just the article you point data-content at. The header, feature image, and footer do not count toward the progress.</p>
+        <h4>Why is the bar invisible at the top?</h4>
+        <p>At 0% the fill has no width and the track is transparent by default. Give the track a color (see Colors) to show the bar even when empty.</p>
+        <h4>Does it work outside Ghost?</h4>
+        <p>Yes. Anywhere you can inject a script, point data-content at your article container. For Notion that is .notion-page-content.</p>
+
+        <h2>Wrapping up</h2>
+        <p>ghost-progress-plugin is open source under the MIT license; the code and issues live on GitHub. Try the options in the left panel and copy the embed snippet when you are happy. If it helped you, a coffee is always appreciated ☕.</p>
+    </article>
+
+    <section class="demo-comments">
+        <h2 class="demo-comments-title">Comments</h2>
+        <script src="https://giscus.app/client.js"
+                data-repo="GreedyLabs/giscus-comment"
+                data-repo-id="R_kgDOTHbOrw"
+                data-category="ghost-progress-plugin.greedylabs.kr"
+                data-category-id="DIC_kwDOTHbOr84DAePj"
+                data-mapping="specific"
+                data-term="ghost-progress-plugin"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="en"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </section>
+
+    <script src="/progress.js" data-auto="false"></script>
+    <script>window.GPROG_I18N = {"copy":"Copy","copyDone":"Copied"};</script>
+    <script src="/demo.js"></script>
+</body>
+</html>
