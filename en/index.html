@@ -177,7 +177,7 @@
 
     <div class="demo-hero">Feature image</div>
 
-    <article class="demo-article">
+    <article class="demo-article gh-content gh-canvas">
         <h1>ghost-progress-plugin preview</h1>
         <p>Scroll and watch the bar at the top fill from 0% to 100%. Change options in the left panel and the embed code updates with them.</p>
 
@@ -191,7 +191,7 @@
         data-content=".gh-content"
         data-position="top"&gt;&lt;/script&gt;</code></pre>
         <h3>Code injection</h3>
-        <p>In Ghost, paste it into Settings → Code injection → Site Footer. On Notion-based hosting, add it in the custom-code field: oopy has a head/footer code box in its site settings, super.so has a Custom Code area, and there you set data-content to .notion-page-content. On any other site, put it just before the closing &lt;/body&gt; tag.</p>
+        <p>In Ghost, paste it into Settings → Code injection → Site Footer. On Notion-based hosting, add it in the custom-code field: oopy has a head/footer code box in its site settings, super.so has a Custom Code area, and there you set <code>data-content</code> to <code>.notion-page-content</code>. On any other site, put it just before the closing &lt;/body&gt; tag.</p>
         <h3>Options</h3>
         <p>Everything is configured with data-* attributes on the script tag: the content selector, the position, the height, and the z-index:</p>
         <pre><code>data-content=".gh-content"
@@ -200,9 +200,9 @@ data-height="4"
 data-z-index="100"</code></pre>
 
         <h2>Customize</h2>
-        <p>The bar color and thickness are adjustable. Every class and CSS variable is namespaced under greedylabs-ghost-progress, so it never clashes with your theme.</p>
+        <p>The bar color and thickness are adjustable. Every class and CSS variable is namespaced under <code>greedylabs-ghost-progress</code>, so it never clashes with your theme.</p>
         <h3>Colors</h3>
-        <p>The fill follows your Ghost theme accent (--ghost-accent-color) by default; set data-color or override the CSS variables to change it. The unread track is transparent by default, so give it a color to make the bar visible even at 0%:</p>
+        <p>The fill follows your Ghost theme accent (<code>--ghost-accent-color</code>) by default; set <code>data-color</code> or override the CSS variables to change it. The unread track is transparent by default, so give it a color to make the bar visible even at 0%:</p>
         <pre><code>.greedylabs-ghost-progress {
   --greedylabs-ghost-progress-track: rgba(0,0,0,.08);
 }
@@ -212,22 +212,22 @@ data-z-index="100"</code></pre>
   }
 }</code></pre>
         <h3>Position</h3>
-        <p>Use data-position for top or bottom, and data-height for the thickness in pixels. The bar reaches 0% when the article top meets the top of the viewport, and 100% when its bottom meets the bottom.</p>
+        <p>Use <code>data-position</code> for top or bottom, and <code>data-height</code> for the thickness in pixels. The bar reaches 0% when the article top meets the top of the viewport, and 100% when its bottom meets the bottom.</p>
 
         <h2>FAQ</h2>
         <!-- Questions are h4 so they stay out of the h2/h3 demo TOC -->
         <h4>Does it track the whole page or just the article?</h4>
-        <p>Just the article you point data-content at. The header, feature image, and footer do not count toward the progress.</p>
+        <p>Just the article you point <code>data-content</code> at. The header, feature image, and footer do not count toward the progress.</p>
         <h4>Why is the bar invisible at the top?</h4>
         <p>At 0% the fill has no width and the track is transparent by default. Give the track a color (see Colors) to show the bar even when empty.</p>
         <h4>Does it work outside Ghost?</h4>
-        <p>Yes. Anywhere you can inject a script, point data-content at your article container. For Notion that is .notion-page-content.</p>
+        <p>Yes. Anywhere you can inject a script, point <code>data-content</code> at your article container. For Notion that is <code>.notion-page-content</code>.</p>
 
         <h2>Wrapping up</h2>
         <p>ghost-progress-plugin is open source under the MIT license; the code and issues live on GitHub. Try the options in the left panel and copy the embed snippet when you are happy. If it helped you, a coffee is always appreciated ☕.</p>
     </article>
 
-    <section class="demo-comments">
+    <section class="demo-comments gh-canvas">
         <h2 class="demo-comments-title">Comments</h2>
         <script src="https://giscus.app/client.js"
                 data-repo="GreedyLabs/giscus-comment"

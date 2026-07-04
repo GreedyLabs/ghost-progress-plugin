@@ -177,7 +177,7 @@
 
     <div class="demo-hero">Imagem destacada</div>
 
-    <article class="demo-article">
+    <article class="demo-article gh-content gh-canvas">
         <h1>Prévia do ghost-progress-plugin</h1>
         <p>Role e veja a barra do topo encher de 0% a 100%. Altere as opções no painel à esquerda e o código de incorporação é atualizado.</p>
 
@@ -191,7 +191,7 @@
         data-content=".gh-content"
         data-position="top"&gt;&lt;/script&gt;</code></pre>
         <h3>Injeção de código</h3>
-        <p>No Ghost, cole em Settings → Code injection → Site Footer. Em hospedagem baseada em Notion, adicione no campo de código personalizado: o oopy tem uma caixa de código head/footer, o super.so tem uma área Custom Code, e ali você define data-content como .notion-page-content. Em qualquer outro site, coloque logo antes da tag &lt;/body&gt;.</p>
+        <p>No Ghost, cole em Settings → Code injection → Site Footer. Em hospedagem baseada em Notion, adicione no campo de código personalizado: o oopy tem uma caixa de código head/footer, o super.so tem uma área Custom Code, e ali você define <code>data-content</code> como <code>.notion-page-content</code>. Em qualquer outro site, coloque logo antes da tag &lt;/body&gt;.</p>
         <h3>Opções</h3>
         <p>Tudo é configurado com atributos data-* na tag do script: o seletor de conteúdo, a posição, a espessura e o z-index:</p>
         <pre><code>data-content=".gh-content"
@@ -200,9 +200,9 @@ data-height="4"
 data-z-index="100"</code></pre>
 
         <h2>Personalização</h2>
-        <p>A cor e a espessura da barra são ajustáveis. Cada classe e variável CSS fica no namespace greedylabs-ghost-progress, então nunca conflita com o seu tema.</p>
+        <p>A cor e a espessura da barra são ajustáveis. Cada classe e variável CSS fica no namespace <code>greedylabs-ghost-progress</code>, então nunca conflita com o seu tema.</p>
         <h3>Cores</h3>
-        <p>O preenchimento segue, por padrão, a cor de destaque do seu tema Ghost (--ghost-accent-color); use data-color ou sobrescreva as variáveis CSS para mudá-la. A trilha não lida é transparente por padrão, então dê a ela uma cor para a barra aparecer mesmo em 0%:</p>
+        <p>O preenchimento segue, por padrão, a cor de destaque do seu tema Ghost (<code>--ghost-accent-color</code>); use <code>data-color</code> ou sobrescreva as variáveis CSS para mudá-la. A trilha não lida é transparente por padrão, então dê a ela uma cor para a barra aparecer mesmo em 0%:</p>
         <pre><code>.greedylabs-ghost-progress {
   --greedylabs-ghost-progress-track: rgba(0,0,0,.08);
 }
@@ -212,22 +212,22 @@ data-z-index="100"</code></pre>
   }
 }</code></pre>
         <h3>Posição</h3>
-        <p>Use data-position para topo ou base, e data-height para a espessura em pixels. A barra chega a 0% quando o topo do artigo encontra o topo da viewport, e a 100% quando a base encontra a base.</p>
+        <p>Use <code>data-position</code> para topo ou base, e <code>data-height</code> para a espessura em pixels. A barra chega a 0% quando o topo do artigo encontra o topo da viewport, e a 100% quando a base encontra a base.</p>
 
         <h2>Perguntas frequentes</h2>
         <!-- Questions are h4 so they stay out of the h2/h3 demo TOC -->
         <h4>Ele mede a página toda ou só o artigo?</h4>
-        <p>Só o artigo apontado por data-content. Cabeçalho, imagem de destaque e rodapé não contam no progresso.</p>
+        <p>Só o artigo apontado por <code>data-content</code>. Cabeçalho, imagem de destaque e rodapé não contam no progresso.</p>
         <h4>Por que a barra fica invisível no topo?</h4>
         <p>Em 0% o preenchimento não tem largura e a trilha é transparente por padrão. Dê uma cor à trilha (ver Cores) para a barra aparecer mesmo vazia.</p>
         <h4>Funciona fora do Ghost?</h4>
-        <p>Sim. Onde você puder injetar um script, aponte data-content para o seu contêiner de artigo. No Notion é .notion-page-content.</p>
+        <p>Sim. Onde você puder injetar um script, aponte <code>data-content</code> para o seu contêiner de artigo. No Notion é <code>.notion-page-content</code>.</p>
 
         <h2>Conclusão</h2>
         <p>ghost-progress-plugin é de código aberto sob a licença MIT; o código e as issues estão no GitHub. Experimente as opções no painel à esquerda e copie o trecho quando gostar. Se ajudou você, um café é sempre bem-vindo ☕.</p>
     </article>
 
-    <section class="demo-comments">
+    <section class="demo-comments gh-canvas">
         <h2 class="demo-comments-title">Comentários</h2>
         <script src="https://giscus.app/client.js"
                 data-repo="GreedyLabs/giscus-comment"

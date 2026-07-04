@@ -113,16 +113,37 @@ pre { margin: 0; background: #0f172a; color: #e2e8f0; padding: 12px; border-radi
 .demo-hero { max-width: 1080px; margin: 24px auto 0; height: 340px; border-radius: 14px;
     background: var(--hero-bg); color: var(--hero-fg); border: 1px solid var(--ui-border);
     display: flex; align-items: center; justify-content: center; font-weight: 500; letter-spacing: .02em; }
-.demo-article { max-width: 720px; margin: 40px auto 48px; padding: 0 24px; }
+/* The real Ghost Source grid, copied from the site's screen.css, so the demo
+   article lays out just like a live post. */
+.gh-canvas {
+    --content-width: 720px; --container-width: 1200px; --container-gap: 4vmin;
+    --main: min(var(--content-width), 100% - var(--container-gap) * 2);
+    --wide: minmax(0, calc((var(--container-width) - var(--content-width)) / 2));
+    --full: minmax(var(--container-gap), 1fr);
+    display: grid;
+    grid-template-columns:
+        [full-start] var(--full) [wide-start] var(--wide)
+        [main-start] var(--main) [main-end]
+        var(--wide) [wide-end] var(--full) [full-end];
+}
+.gh-canvas > * { grid-column: main; }
+
+.demo-article { margin: 40px 0 48px; }
 .demo-article h1 { font-size: 2.2rem; }
 .demo-article h2 { margin-top: 2.4em; font-size: 1.6rem; }
 .demo-article h3 { margin-top: 1.6em; font-size: 1.25rem; }
 .demo-article p { margin: 1em 0; color: var(--art-fg); }
 .demo-article pre { margin: 1.2em 0; }
+/* Inline code in prose, rendered in monospace so options stand out. */
+.demo-article p code, .demo-article li code {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .86em; color: var(--ui-fg);
+    background: var(--ui-subtle); border: 1px solid var(--ui-border);
+    border-radius: 5px; padding: 1px 5px; word-break: break-word;
+}
 
-/* Comments — same column width as the article so the layout stays aligned.
-   giscus injects a .giscus container holding the .giscus-frame iframe. */
-.demo-comments { max-width: 720px; margin: 0 auto; padding: 24px 24px 120px; border-top: 1px solid var(--ui-border); }
+/* Comments live in the same gh-canvas grid so they align with the article. */
+.demo-comments { margin: 8px 0 0; padding-bottom: 120px; }
 .demo-comments-title { font-size: 1.4rem; margin: 0 0 16px; }
 .demo-comments .giscus,
 .demo-comments .giscus-frame { width: 100%; }

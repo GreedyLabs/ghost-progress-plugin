@@ -177,7 +177,7 @@
 
     <div class="demo-hero">Beitragsbild</div>
 
-    <article class="demo-article">
+    <article class="demo-article gh-content gh-canvas">
         <h1>ghost-progress-plugin Vorschau</h1>
         <p>Scrolle und sieh zu, wie sich der Balken oben von 0% auf 100% füllt. Ändere Optionen im linken Panel, der Einbettungscode aktualisiert sich mit.</p>
 
@@ -191,7 +191,7 @@
         data-content=".gh-content"
         data-position="top"&gt;&lt;/script&gt;</code></pre>
         <h3>Code-Injection</h3>
-        <p>Füge es in Ghost unter Settings → Code injection → Site Footer ein. Auf Notion-basiertem Hosting fügst du es im Feld für eigenen Code ein: oopy hat ein head/footer-Codefeld, super.so hat einen Custom-Code-Bereich, und dort setzt du data-content auf .notion-page-content. Auf jeder anderen Seite platzierst du es direkt vor dem schließenden &lt;/body&gt;-Tag.</p>
+        <p>Füge es in Ghost unter Settings → Code injection → Site Footer ein. Auf Notion-basiertem Hosting fügst du es im Feld für eigenen Code ein: oopy hat ein head/footer-Codefeld, super.so hat einen Custom-Code-Bereich, und dort setzt du <code>data-content</code> auf <code>.notion-page-content</code>. Auf jeder anderen Seite platzierst du es direkt vor dem schließenden &lt;/body&gt;-Tag.</p>
         <h3>Optionen</h3>
         <p>Alles wird über data-*-Attribute am Script-Tag konfiguriert: der Inhalts-Selektor, die Position, die Dicke und der Z-Index:</p>
         <pre><code>data-content=".gh-content"
@@ -200,9 +200,9 @@ data-height="4"
 data-z-index="100"</code></pre>
 
         <h2>Anpassung</h2>
-        <p>Farbe und Dicke des Balkens sind anpassbar. Jede Klasse und CSS-Variable ist unter greedylabs-ghost-progress benannt, sodass er nie mit deinem Theme kollidiert.</p>
+        <p>Farbe und Dicke des Balkens sind anpassbar. Jede Klasse und CSS-Variable ist unter <code>greedylabs-ghost-progress</code> benannt, sodass er nie mit deinem Theme kollidiert.</p>
         <h3>Farben</h3>
-        <p>Die Füllung folgt standardmäßig der Akzentfarbe deines Ghost-Themes (--ghost-accent-color); setze data-color oder überschreibe die CSS-Variablen, um sie zu ändern. Die ungelesene Spur ist standardmäßig transparent, gib ihr also eine Farbe, damit der Balken auch bei 0% sichtbar ist:</p>
+        <p>Die Füllung folgt standardmäßig der Akzentfarbe deines Ghost-Themes (<code>--ghost-accent-color</code>); setze <code>data-color</code> oder überschreibe die CSS-Variablen, um sie zu ändern. Die ungelesene Spur ist standardmäßig transparent, gib ihr also eine Farbe, damit der Balken auch bei 0% sichtbar ist:</p>
         <pre><code>.greedylabs-ghost-progress {
   --greedylabs-ghost-progress-track: rgba(0,0,0,.08);
 }
@@ -212,22 +212,22 @@ data-z-index="100"</code></pre>
   }
 }</code></pre>
         <h3>Position</h3>
-        <p>Nutze data-position für oben oder unten und data-height für die Dicke in Pixeln. Der Balken erreicht 0%, wenn der obere Rand des Artikels den oberen Rand des Viewports erreicht, und 100%, wenn sein unterer Rand den unteren erreicht.</p>
+        <p>Nutze <code>data-position</code> für oben oder unten und <code>data-height</code> für die Dicke in Pixeln. Der Balken erreicht 0%, wenn der obere Rand des Artikels den oberen Rand des Viewports erreicht, und 100%, wenn sein unterer Rand den unteren erreicht.</p>
 
         <h2>Häufige Fragen</h2>
         <!-- Questions are h4 so they stay out of the h2/h3 demo TOC -->
         <h4>Misst es die ganze Seite oder nur den Artikel?</h4>
-        <p>Nur den Artikel, auf den data-content zeigt. Header, Beitragsbild und Footer zählen nicht zum Fortschritt.</p>
+        <p>Nur den Artikel, auf den <code>data-content</code> zeigt. Header, Beitragsbild und Footer zählen nicht zum Fortschritt.</p>
         <h4>Warum ist der Balken oben unsichtbar?</h4>
         <p>Bei 0% hat die Füllung keine Breite und die Spur ist standardmäßig transparent. Gib der Spur eine Farbe (siehe Farben), damit der Balken auch leer sichtbar ist.</p>
         <h4>Funktioniert es außerhalb von Ghost?</h4>
-        <p>Ja. Überall, wo du ein Skript einbinden kannst, zeige mit data-content auf deinen Artikel-Container. Bei Notion ist das .notion-page-content.</p>
+        <p>Ja. Überall, wo du ein Skript einbinden kannst, zeige mit <code>data-content</code> auf deinen Artikel-Container. Bei Notion ist das <code>.notion-page-content</code>.</p>
 
         <h2>Fazit</h2>
         <p>ghost-progress-plugin ist Open Source unter der MIT-Lizenz; Code und Issues findest du auf GitHub. Probiere die Optionen im linken Panel aus und kopiere das Snippet, wenn es passt. Wenn es dir geholfen hat, freue ich mich über einen Kaffee ☕.</p>
     </article>
 
-    <section class="demo-comments">
+    <section class="demo-comments gh-canvas">
         <h2 class="demo-comments-title">Kommentare</h2>
         <script src="https://giscus.app/client.js"
                 data-repo="GreedyLabs/giscus-comment"

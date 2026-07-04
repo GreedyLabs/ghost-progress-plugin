@@ -25,6 +25,12 @@ const DEFAULT = data.default;
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escAttr = (s) => esc(s).replace(/"/g, '&quot;');
 
+// esc() a body string, then wrap unambiguous code tokens (data-* attributes, CSS
+// selectors, class names) in <code> so they render in monospace. One pass, so
+// nothing double-wraps. Bare English words (after, replace) are left alone.
+const CODE_RE = /(data-[a-z]+(?:-[a-z]+)*(?:="[^"]*")?)|(\.gh-[a-z-]+)|(\.notion-page-content)|(\.giscus)(?![\w-])|(gh-comments gh-canvas)|(--[a-z-]*ghost[a-z-]*)|(greedylabs-ghost-[a-z-]+)|(h[1-6](?:,\s?h[1-6])+)/g;
+const richText = (s) => esc(s).replace(CODE_RE, (m) => `<code>${m}</code>`);
+
 // giscus UI language codes (fall back to en for unsupported)
 const GISCUS_LANG = { ko: 'ko', en: 'en', ja: 'ja', zh: 'zh-CN', es: 'es', fr: 'fr', de: 'de', pt: 'pt', hi: 'en' };
 
@@ -238,44 +244,44 @@ ${jsonld(lang, t, url)}
 
     <div class="demo-hero">${esc(t.heroText)}</div>
 
-    <article class="demo-article">
+    <article class="demo-article gh-content gh-canvas">
         <h1>${esc(t.demoTitle)}</h1>
-        <p>${esc(t.demoIntro)}</p>
+        <p>${richText(t.demoIntro)}</p>
 
         <h2>${esc(t.h_intro)}</h2>
-        <p>${esc(t.bodyIntro)}</p>
+        <p>${richText(t.bodyIntro)}</p>
 
         <h2>${esc(t.h_install)}</h2>
-        <p>${esc(t.bodyInstall)}</p>
+        <p>${richText(t.bodyInstall)}</p>
         <pre><code>${esc(codeInstall(t))}</code></pre>
         <h3>${esc(t.h_codeinjection)}</h3>
-        <p>${esc(t.bodyCodeInjection)}</p>
+        <p>${richText(t.bodyCodeInjection)}</p>
         <h3>${esc(t.h_options)}</h3>
-        <p>${esc(t.bodyOptions)}</p>
+        <p>${richText(t.bodyOptions)}</p>
         <pre><code>${esc(CODE_OPTIONS)}</code></pre>
 
         <h2>${esc(t.h_customize)}</h2>
-        <p>${esc(t.bodyCustomize)}</p>
+        <p>${richText(t.bodyCustomize)}</p>
         <h3>${esc(t.h_color)}</h3>
-        <p>${esc(t.bodyColor)}</p>
+        <p>${richText(t.bodyColor)}</p>
         <pre><code>${esc(CODE_COLOR)}</code></pre>
         <h3>${esc(t.h_position)}</h3>
-        <p>${esc(t.bodyPosition)}</p>
+        <p>${richText(t.bodyPosition)}</p>
 
         <h2>${esc(t.h_faq)}</h2>
         <!-- Questions are h4 so they stay out of the h2/h3 demo TOC -->
         <h4>${esc(t.faqQ1)}</h4>
-        <p>${esc(t.faqA1)}</p>
+        <p>${richText(t.faqA1)}</p>
         <h4>${esc(t.faqQ2)}</h4>
-        <p>${esc(t.faqA2)}</p>
+        <p>${richText(t.faqA2)}</p>
         <h4>${esc(t.faqQ3)}</h4>
-        <p>${esc(t.faqA3)}</p>
+        <p>${richText(t.faqA3)}</p>
 
         <h2>${esc(t.h_closing)}</h2>
-        <p>${esc(t.bodyClosing)}</p>
+        <p>${richText(t.bodyClosing)}</p>
     </article>
 
-    <section class="demo-comments">
+    <section class="demo-comments gh-canvas">
         <h2 class="demo-comments-title">${esc(t.commentsTitle)}</h2>
         <script src="https://giscus.app/client.js"
                 data-repo="GreedyLabs/giscus-comment"

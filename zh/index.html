@@ -177,7 +177,7 @@
 
     <div class="demo-hero">特色图片</div>
 
-    <article class="demo-article">
+    <article class="demo-article gh-content gh-canvas">
         <h1>ghost-progress-plugin 预览</h1>
         <p>滚动时顶部的进度条会从 0% 填充到 100%。在左侧面板修改选项，嵌入代码也随之更新。</p>
 
@@ -191,7 +191,7 @@
         data-content=".gh-content"
         data-position="top"&gt;&lt;/script&gt;</code></pre>
         <h3>代码注入</h3>
-        <p>在 Ghost 中，粘贴到 Settings → Code injection → Site Footer。基于 Notion 的托管，则放进自定义代码处：oopy 在站点设置里有 head/footer 代码框，super.so 有 Custom Code 区域，在那里把 data-content 设为 .notion-page-content。其他网站则放在结束标签 &lt;/body&gt; 之前。</p>
+        <p>在 Ghost 中，粘贴到 Settings → Code injection → Site Footer。基于 Notion 的托管，则放进自定义代码处：oopy 在站点设置里有 head/footer 代码框，super.so 有 Custom Code 区域，在那里把 <code>data-content</code> 设为 <code>.notion-page-content</code>。其他网站则放在结束标签 &lt;/body&gt; 之前。</p>
         <h3>选项设置</h3>
         <p>所有行为都通过脚本标签上的 data-* 属性配置：可设置正文选择器、位置、粗细和 z-index：</p>
         <pre><code>data-content=".gh-content"
@@ -200,9 +200,9 @@ data-height="4"
 data-z-index="100"</code></pre>
 
         <h2>自定义</h2>
-        <p>进度条的颜色和粗细都可自由调整。所有类名和 CSS 变量都以 greedylabs-ghost-progress 命名空间隔离，绝不会与你的主题冲突。</p>
+        <p>进度条的颜色和粗细都可自由调整。所有类名和 CSS 变量都以 <code>greedylabs-ghost-progress</code> 命名空间隔离，绝不会与你的主题冲突。</p>
         <h3>颜色</h3>
-        <p>填充色默认跟随 Ghost 主题强调色（--ghost-accent-color）。要更改，可设置 data-color 或覆盖 CSS 变量。未读部分的轨道默认透明，若想在 0% 时也能看到进度条，请给轨道设置颜色：</p>
+        <p>填充色默认跟随 Ghost 主题强调色（<code>--ghost-accent-color</code>）。要更改，可设置 <code>data-color</code> 或覆盖 CSS 变量。未读部分的轨道默认透明，若想在 0% 时也能看到进度条，请给轨道设置颜色：</p>
         <pre><code>.greedylabs-ghost-progress {
   --greedylabs-ghost-progress-track: rgba(0,0,0,.08);
 }
@@ -212,22 +212,22 @@ data-z-index="100"</code></pre>
   }
 }</code></pre>
         <h3>位置</h3>
-        <p>用 data-position 设置顶部或底部，data-height 设置粗细(px)。当文章顶部到达视口顶部时为 0%，底部到达视口底部时为 100%。</p>
+        <p>用 <code>data-position</code> 设置顶部或底部，<code>data-height</code> 设置粗细(px)。当文章顶部到达视口顶部时为 0%，底部到达视口底部时为 100%。</p>
 
         <h2>常见问题</h2>
         <!-- Questions are h4 so they stay out of the h2/h3 demo TOC -->
         <h4>它以整页为准还是以文章为准？</h4>
-        <p>以你用 data-content 指定的文章为准。页眉、封面图和页脚不计入进度。</p>
+        <p>以你用 <code>data-content</code> 指定的文章为准。页眉、封面图和页脚不计入进度。</p>
         <h4>为什么顶部看不到进度条？</h4>
         <p>在 0% 时填充宽度为 0，且轨道默认透明。给轨道设置颜色（见配色一节），空的时候也能看到进度条。</p>
         <h4>在 Ghost 之外能用吗？</h4>
-        <p>能。只要能注入脚本，用 data-content 指向你的正文容器即可。Notion 是 .notion-page-content。</p>
+        <p>能。只要能注入脚本，用 <code>data-content</code> 指向你的正文容器即可。Notion 是 <code>.notion-page-content</code>。</p>
 
         <h2>结语</h2>
         <p>ghost-progress-plugin 是 MIT 许可的开源项目，代码与问题反馈都在 GitHub 上。在左侧面板调整选项，满意后复制嵌入代码即可。如果它帮到了你，欢迎请我喝杯咖啡 ☕。</p>
     </article>
 
-    <section class="demo-comments">
+    <section class="demo-comments gh-canvas">
         <h2 class="demo-comments-title">评论</h2>
         <script src="https://giscus.app/client.js"
                 data-repo="GreedyLabs/giscus-comment"

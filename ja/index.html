@@ -177,7 +177,7 @@
 
     <div class="demo-hero">アイキャッチ画像</div>
 
-    <article class="demo-article">
+    <article class="demo-article gh-content gh-canvas">
         <h1>ghost-progress-plugin プレビュー</h1>
         <p>スクロールすると上部のバーが0%から100%へ満ちます。左パネルでオプションを変えると、埋め込みコードも一緒に更新されます。</p>
 
@@ -191,7 +191,7 @@
         data-content=".gh-content"
         data-position="top"&gt;&lt;/script&gt;</code></pre>
         <h3>コードインジェクション</h3>
-        <p>Ghost では Settings → Code injection → Site Footer に貼り付けます。Notion ベースのホスティングなら、カスタムコード欄に追加します。oopy はサイト設定の head/footer コード欄、super.so は Custom Code 領域があり、そこで data-content を .notion-page-content にします。その他のサイトでは閉じタグ &lt;/body&gt; の直前に置きます。</p>
+        <p>Ghost では Settings → Code injection → Site Footer に貼り付けます。Notion ベースのホスティングなら、カスタムコード欄に追加します。oopy はサイト設定の head/footer コード欄、super.so は Custom Code 領域があり、そこで <code>data-content</code> を <code>.notion-page-content</code> にします。その他のサイトでは閉じタグ &lt;/body&gt; の直前に置きます。</p>
         <h3>オプション設定</h3>
         <p>動作はすべてスクリプトタグの data-* 属性で設定します：本文セレクタ、位置、太さ、z-index を指定できます：</p>
         <pre><code>data-content=".gh-content"
@@ -200,9 +200,9 @@ data-height="4"
 data-z-index="100"</code></pre>
 
         <h2>カスタマイズ</h2>
-        <p>バーの色と太さは自由に調整できます。すべてのクラスと CSS 変数は greedylabs-ghost-progress で名前空間化されており、テーマと衝突しません。</p>
+        <p>バーの色と太さは自由に調整できます。すべてのクラスと CSS 変数は <code>greedylabs-ghost-progress</code> で名前空間化されており、テーマと衝突しません。</p>
         <h3>配色</h3>
-        <p>満ちる色は、既定で Ghost テーマのアクセント色（--ghost-accent-color）に従います。変更するには data-color を指定するか、CSS 変数を上書きします。未読部分のトラックは既定で透明なので、0%でもバーを見せたい場合はトラックに色を付けます：</p>
+        <p>満ちる色は、既定で Ghost テーマのアクセント色（<code>--ghost-accent-color</code>）に従います。変更するには <code>data-color</code> を指定するか、CSS 変数を上書きします。未読部分のトラックは既定で透明なので、0%でもバーを見せたい場合はトラックに色を付けます：</p>
         <pre><code>.greedylabs-ghost-progress {
   --greedylabs-ghost-progress-track: rgba(0,0,0,.08);
 }
@@ -212,22 +212,22 @@ data-z-index="100"</code></pre>
   }
 }</code></pre>
         <h3>位置</h3>
-        <p>data-position で上下、data-height で太さ(px)を指定します。バーは記事の上端がビューポート上端に来ると0%、下端がビューポート下端に来ると100%になります。</p>
+        <p><code>data-position</code> で上下、<code>data-height</code> で太さ(px)を指定します。バーは記事の上端がビューポート上端に来ると0%、下端がビューポート下端に来ると100%になります。</p>
 
         <h2>よくある質問</h2>
         <!-- Questions are h4 so they stay out of the h2/h3 demo TOC -->
         <h4>ページ全体ですか、それとも記事だけですか？</h4>
-        <p>data-content で指定した記事だけです。ヘッダー、フィーチャー画像、フッターは進捗に含まれません。</p>
+        <p><code>data-content</code> で指定した記事だけです。ヘッダー、フィーチャー画像、フッターは進捗に含まれません。</p>
         <h4>上部でバーが見えません。</h4>
         <p>0%では満ちる幅が0で、トラックが既定で透明だからです。トラックに色を付けると（配色セクション参照）、空でもバーが見えます。</p>
         <h4>Ghost 以外でも使えますか？</h4>
-        <p>使えます。スクリプトを追加できる場所なら、data-content で本文コンテナを指定するだけです。Notion では .notion-page-content です。</p>
+        <p>使えます。スクリプトを追加できる場所なら、<code>data-content</code> で本文コンテナを指定するだけです。Notion では <code>.notion-page-content</code> です。</p>
 
         <h2>おわりに</h2>
         <p>ghost-progress-plugin は MIT ライセンスのオープンソースで、コードと Issue は GitHub にあります。左パネルでオプションを変え、気に入ったら埋め込みコードをコピーしてください。お役に立てたら、コーヒーを一杯いただけると嬉しいです ☕。</p>
     </article>
 
-    <section class="demo-comments">
+    <section class="demo-comments gh-canvas">
         <h2 class="demo-comments-title">コメント</h2>
         <script src="https://giscus.app/client.js"
                 data-repo="GreedyLabs/giscus-comment"
