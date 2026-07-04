@@ -282,7 +282,6 @@ ${jsonld(lang, t, url)}
     </article>
 
     <section class="demo-comments gh-canvas">
-        <h2 class="demo-comments-title">${esc(t.commentsTitle)}</h2>
         <script src="https://giscus.app/client.js"
                 data-repo="GreedyLabs/giscus-comment"
                 data-repo-id="R_kgDOTHbOrw"
