@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ghost-toc-plugin.greedylabs.kr/sitemap.xml
+Sitemap: https://ghost-progress-plugin.greedylabs.kr/sitemap.xml

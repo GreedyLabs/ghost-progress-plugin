@@ -31,7 +31,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          # Publish the repo root: demo/configurator + toc.js + toc.css + toc.min.js
+          # Publish the repo root: demo/configurator + progress.js + progress.css + progress.min.js
           path: '.'
 
       - name: Deploy to GitHub Pages

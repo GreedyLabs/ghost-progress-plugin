@@ -1,0 +1,31 @@
+# ghost-progress-plugin
+
+> A tiny (~1KB), dependency-free reading progress bar for Ghost blogs. It fills a thin bar from 0% to 100% as the reader moves through the article, measured against the article content rather than the whole page. Follows the Ghost theme accent color automatically. Works on Ghost and anywhere you can inject a script. MIT-licensed, by GreedyLabs.
+
+## Install
+
+Add one line to Ghost's Settings -> Code injection -> Site Footer:
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GreedyLabs/ghost-progress-plugin@1/progress.css">
+    <script src="https://cdn.jsdelivr.net/gh/GreedyLabs/ghost-progress-plugin@1/progress.min.js"
+            data-content=".gh-content"
+            data-position="top"></script>
+
+## Options
+
+All behavior is configured with `data-*` attributes on the script tag:
+
+- `data-content` — CSS selector for the article container (e.g. `.gh-content`)
+- `data-position` — `top` or `bottom` of the viewport
+- `data-height` — bar thickness in px (default `4`)
+- `data-color` — bar color (defaults to the Ghost theme accent color)
+- `data-z-index` — stacking order (default `100`)
+
+All classes and CSS variables are namespaced under `greedylabs-ghost-progress`, so the widget never collides with a theme. The bar respects `prefers-reduced-motion`.
+
+## Links
+
+- Live demo and configurator: https://ghost-progress-plugin.greedylabs.kr/en/
+- Source and issues: https://github.com/GreedyLabs/ghost-progress-plugin
+- License: MIT (https://opensource.org/licenses/MIT)
+- Author: GreedyLabs (https://github.com/GreedyLabs)
