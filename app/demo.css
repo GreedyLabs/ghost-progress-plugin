@@ -1,12 +1,3 @@
-/* Styles for the ghost-progress-plugin demo / configurator page only.
-   (The distributed widget styles live in progress.css.) */
-
-/* Light palette (default). JS sets data-theme="light"|"dark" on <html>; "system"
-   resolves to one of those and reacts to OS changes. We also define the widget's
-   own --greedylabs-ghost-progress-* variables here so the TOC matches the chosen theme
-   even when it differs from the OS (otherwise progress.css's prefers-color-scheme
-   media query would fight a forced theme).
-   --ghost-accent-color simulates a Ghost site so "auto accent" previews a color. */
 :root {
     --page-bg: #ffffff;
     --ui-bg: #ffffff;
@@ -46,7 +37,6 @@ body { margin: 0; color: var(--ui-fg); background: var(--page-bg); line-height: 
     transition: background-color .2s ease, color .2s ease;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
 
-/* control panel floats over a margin; it moves to the side OPPOSITE the TOC */
 .panel {
     position: fixed; left: 16px; top: 16px; width: 300px;
     max-height: calc(100vh - 32px); overflow: auto; z-index: 1000;
@@ -57,8 +47,6 @@ body { margin: 0; color: var(--ui-fg); background: var(--page-bg); line-height: 
 .panel h1 { font-size: 15px; margin: 0 0 12px; }
 .panel .sub { color: var(--ui-muted); font-size: 12px; margin: 0 0 14px; }
 
-/* language + theme — not widget options, so grouped at the top (labelled like the
-   other fields) with a divider below to separate them from the configurator */
 .panel-meta { margin: 0 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--ui-border); }
 .panel-meta .field.row { margin-bottom: 0; }
 
@@ -69,7 +57,7 @@ body { margin: 0; color: var(--ui-fg); background: var(--page-bg); line-height: 
     border-radius: 7px; font: inherit; font-size: 13px;
     background: var(--ui-bg); color: var(--ui-fg);
 }
-/* one-click presets that fill the content selector for a given platform */
+
 .presets { display: flex; gap: 6px; margin-top: 6px; }
 .preset { font: inherit; font-size: 11px; padding: 3px 8px; cursor: pointer;
     border: 1px solid var(--ui-border); border-radius: 6px;
@@ -96,25 +84,20 @@ pre { margin: 0; background: #0f172a; color: #e2e8f0; padding: 12px; border-radi
     overflow-x: auto; white-space: pre; }
 .hint { color: var(--ui-muted); font-size: 11.5px; margin-top: 8px; }
 
-/* Support / donation call-to-action at the bottom of the control panel, with a
-   divider above to separate it from the configurator. The Buy Me a Coffee script
-   injects its own <a> button after the script tag. */
 .panel-support { margin-top: 16px; padding-top: 16px; text-align: center;
     border-top: 1px solid var(--ui-border); }
-/* same family/size/color as the panel's other secondary text (.hint, .sub) */
+
 .panel-support p { margin: 0 0 10px; font-size: 11.5px; line-height: 1.5;
     color: var(--ui-muted); white-space: nowrap; }
 .panel-support a, .panel-support img { max-width: 100%; vertical-align: middle; }
 
-/* Demo-only: a faint track so the reading bar is visible even at 0% */
 .greedylabs-ghost-progress { --greedylabs-ghost-progress-track: rgba(0,0,0,.08); }
 :root[data-theme="dark"] .greedylabs-ghost-progress { --greedylabs-ghost-progress-track: rgba(255,255,255,.14); }
 
 .demo-hero { max-width: 1080px; margin: 24px auto 0; height: 340px; border-radius: 14px;
     background: var(--hero-bg); color: var(--hero-fg); border: 1px solid var(--ui-border);
     display: flex; align-items: center; justify-content: center; font-weight: 500; letter-spacing: .02em; }
-/* The real Ghost Source grid, copied from the site's screen.css, so the demo
-   article lays out just like a live post. */
+
 .gh-canvas {
     --content-width: 720px; --container-width: 1200px; --container-gap: 4vmin;
     --main: min(var(--content-width), 100% - var(--container-gap) * 2);
@@ -134,7 +117,7 @@ pre { margin: 0; background: #0f172a; color: #e2e8f0; padding: 12px; border-radi
 .demo-article h3 { margin-top: 1.6em; font-size: 1.25rem; }
 .demo-article p { margin: 1em 0; color: var(--art-fg); }
 .demo-article pre { margin: 1.2em 0; }
-/* Inline code in prose, rendered in monospace so options stand out. */
+
 .demo-article p code, .demo-article li code {
     font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
     font-size: .86em; color: var(--ui-fg);
@@ -142,7 +125,6 @@ pre { margin: 0; background: #0f172a; color: #e2e8f0; padding: 12px; border-radi
     border-radius: 5px; padding: 1px 5px; word-break: break-word;
 }
 
-/* Comments live in the same gh-canvas grid so they align with the article. */
 .demo-comments { margin: 8px 0 0; padding-bottom: 120px; }
 .demo-comments-title { font-size: 1.4rem; margin: 0 0 16px; }
 .demo-comments .giscus,

@@ -7,7 +7,7 @@
     <meta name="description" content="Add a reading progress bar to your Ghost blog with one line of code. Tweak options, preview live, and copy the embed snippet. Open source (MIT).">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ghost-progress-plugin.greedylabs.kr/">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a73e8'/%3E%3Cg fill='white'%3E%3Crect x='8' y='9' width='12' height='2.5' rx='1.25'/%3E%3Crect x='8' y='15' width='16' height='2.5' rx='1.25'/%3E%3Crect x='8' y='21' width='10' height='2.5' rx='1.25'/%3E%3C/g%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%231a73e8%27/%3E%3Crect x=%276%27 y=%2714%27 width=%2720%27 height=%274%27 rx=%272%27 fill=%27rgba(255,255,255,.35)%27/%3E%3Crect x=%276%27 y=%2714%27 width=%2712%27 height=%274%27 rx=%272%27 fill=%27white%27/%3E%3C/svg%3E">
     <link rel="alternate" hreflang="ko" href="https://ghost-progress-plugin.greedylabs.kr/ko/">
     <link rel="alternate" hreflang="en" href="https://ghost-progress-plugin.greedylabs.kr/en/">
     <link rel="alternate" hreflang="ja" href="https://ghost-progress-plugin.greedylabs.kr/ja/">
@@ -25,9 +25,9 @@
             var n = ((navigator.languages && navigator.languages[0]) || navigator.language || def).toLowerCase();
             var pick = def;
             for (var i = 0; i < supported.length; i++) {
-                if (n === supported[i] || n.indexOf(supported[i] + '-') === 0) { pick = supported[i]; break; }
+                if (n === supported[i] || n.indexOf(supported[i] + "-") === 0) { pick = supported[i]; break; }
             }
-            location.replace('/' + pick + '/');
+            location.replace("/" + pick + "/");
         })();
     </script>
 </head>
