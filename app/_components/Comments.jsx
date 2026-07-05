@@ -9,8 +9,8 @@ export default function Comments({ locale }) {
     <Giscus
       repo="GreedyLabs/giscus-comment"
       repoId="R_kgDOTHbOrw"
-      category="ghost-progress-plugin.greedylabs.kr"
-      categoryId="DIC_kwDOTHbOr84DAePj"
+      category="ghost-plugins"
+      categoryId="DIC_kwDOTHbOr84DAhRe"
       mapping="specific"
       term="ghost-progress-plugin"
       reactionsEnabled="1"
