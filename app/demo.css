@@ -44,7 +44,10 @@ body { margin: 0; color: var(--ui-fg); background: var(--page-bg); line-height: 
     padding: 16px; box-shadow: 0 6px 24px rgba(0,0,0,.08); font-size: 13px;
 }
 .panel.panel--right { left: auto; right: 16px; }
-.panel h1 { font-size: 15px; margin: 0 0 12px; }
+.panel h1 { font-size: 15px; margin: 0; }
+.panel-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 12px; }
+.gh-link { color: var(--ui-muted); display: inline-flex; line-height: 0; }
+.gh-link:hover { color: var(--ui-fg); }
 .panel .sub { color: var(--ui-muted); font-size: 12px; margin: 0 0 14px; }
 
 .panel-meta { margin: 0 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--ui-border); }
