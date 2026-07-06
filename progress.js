@@ -15,6 +15,10 @@
  *   data-height     bar thickness (px)                  (4)
  *   data-color      bar color (any CSS color)           (theme accent)
  *   data-z-index    stacking order                      (100)
+ *   data-anchor     selector to pin the bar against      (none: pins to the viewport edge)
+ *                   e.g. a nav bar; "top" sits just below it, "bottom" just above it.
+ *                   If the selector matches nothing or is hidden (display:none on
+ *                   mobile), the bar falls back to the viewport edge.
  *   data-auto       set to "false" to skip auto-init    ("true")
  *
  * Programmatic API (for tools / live previews):
@@ -34,7 +38,8 @@
         position: 'top',
         height: 4,
         color: '',
-        zIndex: 100
+        zIndex: 100,
+        anchor: ''
     };
 
     // Merge defined option values over DEFAULTS and normalise `position`.
@@ -77,6 +82,29 @@
         var bar = built.bar, fill = built.fill;
         document.body.appendChild(bar);
 
+        // Optional: pin the bar against an anchor element (e.g. a nav bar) instead
+        // of the viewport edge. "top" sits at the anchor's bottom, "bottom" at its
+        // top; once the anchor scrolls out of view the bar clamps to the edge.
+        // Resolve the anchor once; a bad selector must never break the bar.
+        var anchorEl = null;
+        if (cfg.anchor) {
+            try { anchorEl = typeof cfg.anchor === 'string' ? document.querySelector(cfg.anchor) : cfg.anchor; }
+            catch (e) { anchorEl = null; }
+        }
+        function align() {
+            if (!anchorEl) { return; }
+            var r = anchorEl.getBoundingClientRect();
+            // An anchor absent on this viewport (e.g. a desktop nav set to
+            // display:none on mobile) reports a zero box: clear the offset so the
+            // bar falls back to the viewport edge, safely on every device.
+            var hidden = r.width === 0 && r.height === 0;
+            if (cfg.position === 'bottom') {
+                bar.style.bottom = hidden ? '' : Math.max(0, window.innerHeight - r.top) + 'px';
+            } else {
+                bar.style.top = hidden ? '' : Math.max(0, r.bottom) + 'px';
+            }
+        }
+
         // Reading progress 0..1 through the article: 0 when its top reaches the top
         // of the viewport, 1 when its bottom reaches the bottom of the viewport.
         function progress() {
@@ -94,9 +122,10 @@
         function tick() {
             if (ticking) { return; }
             ticking = true;
-            window.requestAnimationFrame(function () { update(); ticking = false; });
+            window.requestAnimationFrame(function () { align(); update(); ticking = false; });
         }
 
+        align();
         update();
         window.addEventListener('scroll', tick, { passive: true });
         window.addEventListener('resize', tick);
@@ -142,7 +171,8 @@
             position: str('position', undefined),
             height: num('height', undefined),
             color: str('color', undefined),
-            zIndex: num('z-index', undefined)
+            zIndex: num('z-index', undefined),
+            anchor: str('anchor', undefined)
         });
     });
 })();

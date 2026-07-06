@@ -33,7 +33,7 @@
   "bodyOptions": "Alles wird über data-*-Attribute am Script-Tag konfiguriert: der Inhalts-Selektor, die Position, die Dicke und der Z-Index:",
   "bodyCustomize": "Farbe und Dicke des Balkens sind anpassbar. Jede Klasse und CSS-Variable ist unter greedylabs-ghost-progress benannt, sodass er nie mit deinem Theme kollidiert.",
   "bodyColor": "Die Füllung folgt standardmäßig der Akzentfarbe deines Ghost-Themes (--ghost-accent-color); setze data-color oder überschreibe die CSS-Variablen, um sie zu ändern. Die ungelesene Spur ist standardmäßig transparent, gib ihr also eine Farbe, damit der Balken auch bei 0% sichtbar ist:",
-  "bodyPosition": "Nutze data-position für oben oder unten und data-height für die Dicke in Pixeln. Der Balken erreicht 0%, wenn der obere Rand des Artikels den oberen Rand des Viewports erreicht, und 100%, wenn sein unterer Rand den unteren erreicht.",
+  "bodyPosition": "Nutze data-position für oben oder unten und data-height für die Dicke in Pixeln. Der Balken erreicht 0%, wenn der obere Rand des Artikels den oberen Rand des Viewports erreicht, und 100%, wenn sein unterer Rand den unteren erreicht. Geben Sie data-anchor einen Selektor, um die Leiste an diesem Element (z. B. einer oberen Navigation) statt am Viewport-Rand auszurichten. Ist der Selektor leer, trifft nichts oder ist ausgeblendet (wie auf Mobilgeräten), fällt die Leiste auf den Viewport-Rand zurück.",
   "bodyClosing": "ghost-progress-plugin ist Open Source unter der MIT-Lizenz; Code und Issues findest du auf GitHub. Probiere die Optionen im linken Panel aus und kopiere das Snippet, wenn es passt. Wenn es dir geholfen hat, freue ich mich über einen Kaffee ☕.",
   "h_faq": "Häufige Fragen",
   "faqQ1": "Misst es die ganze Seite oder nur den Artikel?",
@@ -47,5 +47,10 @@
   "lblHeight": "Dicke (px)",
   "lblAutoColor": "Akzentfarbe des Ghost-Themes automatisch verwenden",
   "lblColor": "Balkenfarbe",
-  "lblZindex": "Z-Index"
+  "lblZindex": "Z-Index",
+  "lblAnchor": "Anker",
+  "hintAnchor": "(Selektor, z. B. eine Navigationsleiste)",
+  "reset": "Zurücksetzen",
+  "hintColor": "(leer: Akzentfarbe des Themes)",
+  "lblNav": "Feste obere Navigation (Demo)"
 }

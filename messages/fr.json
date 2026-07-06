@@ -33,7 +33,7 @@
   "bodyOptions": "Tout se configure avec des attributs data-* sur la balise script : le sélecteur de contenu, la position, l'épaisseur et le z-index :",
   "bodyCustomize": "La couleur et l'épaisseur de la barre sont réglables. Chaque classe et variable CSS est dans l'espace de noms greedylabs-ghost-progress, donc elle n'entre jamais en conflit avec votre thème.",
   "bodyColor": "Le remplissage suit par défaut la couleur d'accent de votre thème Ghost (--ghost-accent-color) ; utilisez data-color ou redéfinissez les variables CSS pour la changer. La piste non lue est transparente par défaut, donnez-lui donc une couleur pour que la barre soit visible même à 0% :",
-  "bodyPosition": "Utilisez data-position pour haut ou bas, et data-height pour l'épaisseur en pixels. La barre atteint 0% quand le haut de l'article rejoint le haut de la fenêtre, et 100% quand son bas rejoint le bas.",
+  "bodyPosition": "Utilisez data-position pour haut ou bas, et data-height pour l'épaisseur en pixels. La barre atteint 0% quand le haut de l'article rejoint le haut de la fenêtre, et 100% quand son bas rejoint le bas. Donnez à data-anchor un sélecteur pour fixer la barre à cet élément (par exemple une barre de navigation en haut) au lieu du bord de la fenêtre. Si le sélecteur est vide, ne correspond à rien ou est masqué (comme sur mobile), la barre revient au bord de la fenêtre.",
   "bodyClosing": "ghost-progress-plugin est open source sous licence MIT ; le code et les tickets sont sur GitHub. Essayez les options dans le panneau de gauche et copiez l'extrait quand cela vous convient. Si cela vous a aidé, un café est toujours apprécié ☕.",
   "h_faq": "Questions fréquentes",
   "faqQ1": "Mesure-t-il toute la page ou seulement l'article ?",
@@ -47,5 +47,10 @@
   "lblHeight": "Épaisseur (px)",
   "lblAutoColor": "Utiliser automatiquement la couleur d'accent du thème Ghost",
   "lblColor": "Couleur de la barre",
-  "lblZindex": "Z-index"
+  "lblZindex": "Z-index",
+  "lblAnchor": "Ancrage",
+  "hintAnchor": "(sélecteur, ex. une barre de nav)",
+  "reset": "Réinitialiser",
+  "hintColor": "(vide : accent du thème)",
+  "lblNav": "Nav fixe en haut (démo)"
 }

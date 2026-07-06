@@ -33,7 +33,7 @@
   "bodyOptions": "Todo se configura con atributos data-* en la etiqueta del script: el selector de contenido, la posición, el grosor y el z-index:",
   "bodyCustomize": "El color y el grosor de la barra son ajustables. Cada clase y variable CSS está en el espacio de nombres greedylabs-ghost-progress, así que nunca choca con tu tema.",
   "bodyColor": "El relleno sigue por defecto el color de acento de tu tema Ghost (--ghost-accent-color); usa data-color o sobrescribe las variables CSS para cambiarlo. La pista no leída es transparente por defecto, así que dale un color para que la barra se vea incluso al 0%:",
-  "bodyPosition": "Usa data-position para arriba o abajo, y data-height para el grosor en píxeles. La barra llega a 0% cuando la parte superior del artículo toca la parte superior de la ventana, y a 100% cuando su parte inferior toca la inferior.",
+  "bodyPosition": "Usa data-position para arriba o abajo, y data-height para el grosor en píxeles. La barra llega a 0% cuando la parte superior del artículo toca la parte superior de la ventana, y a 100% cuando su parte inferior toca la inferior. Da a data-anchor un selector para fijar la barra a ese elemento (por ejemplo, una barra de navegación superior) en lugar del borde de la ventana. Si el selector está vacío, no coincide o está oculto (como en móvil), la barra vuelve al borde de la ventana.",
   "bodyClosing": "ghost-progress-plugin es de código abierto bajo licencia MIT; el código y las incidencias están en GitHub. Prueba las opciones en el panel izquierdo y copia el fragmento cuando te guste. Si te ha servido, siempre se agradece un café ☕.",
   "h_faq": "Preguntas frecuentes",
   "faqQ1": "¿Mide toda la página o solo el artículo?",
@@ -47,5 +47,10 @@
   "lblHeight": "Grosor (px)",
   "lblAutoColor": "Usar el color de acento del tema Ghost automáticamente",
   "lblColor": "Color de la barra",
-  "lblZindex": "Z-index"
+  "lblZindex": "Z-index",
+  "lblAnchor": "Anclaje",
+  "hintAnchor": "(selector, p. ej. una barra de navegación)",
+  "reset": "Restablecer",
+  "hintColor": "(vacío: acento del tema)",
+  "lblNav": "Nav fija superior (demo)"
 }

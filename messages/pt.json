@@ -33,7 +33,7 @@
   "bodyOptions": "Tudo é configurado com atributos data-* na tag do script: o seletor de conteúdo, a posição, a espessura e o z-index:",
   "bodyCustomize": "A cor e a espessura da barra são ajustáveis. Cada classe e variável CSS fica no namespace greedylabs-ghost-progress, então nunca conflita com o seu tema.",
   "bodyColor": "O preenchimento segue, por padrão, a cor de destaque do seu tema Ghost (--ghost-accent-color); use data-color ou sobrescreva as variáveis CSS para mudá-la. A trilha não lida é transparente por padrão, então dê a ela uma cor para a barra aparecer mesmo em 0%:",
-  "bodyPosition": "Use data-position para topo ou base, e data-height para a espessura em pixels. A barra chega a 0% quando o topo do artigo encontra o topo da viewport, e a 100% quando a base encontra a base.",
+  "bodyPosition": "Use data-position para topo ou base, e data-height para a espessura em pixels. A barra chega a 0% quando o topo do artigo encontra o topo da viewport, e a 100% quando a base encontra a base. Dê ao data-anchor um seletor para fixar a barra nesse elemento (por exemplo, uma barra de navegação no topo) em vez da borda da janela. Se o seletor estiver vazio, não corresponder ou estiver oculto (como no celular), a barra volta para a borda da janela.",
   "bodyClosing": "ghost-progress-plugin é de código aberto sob a licença MIT; o código e as issues estão no GitHub. Experimente as opções no painel à esquerda e copie o trecho quando gostar. Se ajudou você, um café é sempre bem-vindo ☕.",
   "h_faq": "Perguntas frequentes",
   "faqQ1": "Ele mede a página toda ou só o artigo?",
@@ -47,5 +47,10 @@
   "lblHeight": "Espessura (px)",
   "lblAutoColor": "Usar a cor de destaque do tema Ghost automaticamente",
   "lblColor": "Cor da barra",
-  "lblZindex": "Z-index"
+  "lblZindex": "Z-index",
+  "lblAnchor": "Âncora",
+  "hintAnchor": "(seletor, ex. uma barra de navegação)",
+  "reset": "Redefinir",
+  "hintColor": "(vazio: destaque do tema)",
+  "lblNav": "Nav fixa no topo (demo)"
 }

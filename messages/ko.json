@@ -33,7 +33,7 @@
   "bodyOptions": "동작은 모두 스크립트 태그의 data-* 속성으로 설정합니다: 본문 선택자, 위치, 두께, z-index를 지정할 수 있습니다:",
   "bodyCustomize": "바의 색과 두께는 자유롭게 조절할 수 있습니다. 모든 클래스와 CSS 변수는 greedylabs-ghost-progress로 네임스페이스가 걸려 있어 테마와 절대 충돌하지 않습니다.",
   "bodyColor": "채움 색은 기본적으로 Ghost 테마 강조색(--ghost-accent-color)을 따릅니다. 바꾸려면 data-color를 주거나 CSS 변수를 덮어쓰면 됩니다. 읽지 않은 부분의 트랙은 기본이 투명이니, 0%에서도 바가 보이게 하려면 트랙에 색을 주세요:",
-  "bodyPosition": "data-position으로 위/아래를, data-height로 두께(px)를 정합니다. 바는 글 상단이 뷰포트 위에 닿으면 0%, 글 하단이 뷰포트 바닥에 닿으면 100%가 됩니다.",
+  "bodyPosition": "data-position으로 위/아래를, data-height로 두께(px)를 정합니다. 바는 글 상단이 뷰포트 위에 닿으면 0%, 글 하단이 뷰포트 바닥에 닿으면 100%가 됩니다. data-anchor에 선택자를 주면 화면 끝 대신 그 요소(예: 상단 nav) 아래(위)에 바가 붙습니다. 선택자가 비었거나 그 요소가 없는·숨겨진 화면(모바일 등)에서는 자동으로 화면 끝으로 되돌아갑니다.",
   "bodyClosing": "ghost-progress-plugin은 MIT 라이선스 오픈소스이며, 소스와 이슈는 GitHub에 있습니다. 왼쪽 패널에서 옵션을 바꿔 확인한 뒤 마음에 들면 임베드 코드를 복사하세요. 도움이 되었다면 커피 한 잔 부탁드려요 ☕.",
   "h_faq": "자주 묻는 질문",
   "faqQ1": "전체 페이지 기준인가요, 본문 기준인가요?",
@@ -47,5 +47,10 @@
   "lblHeight": "두께(px)",
   "lblAutoColor": "Ghost 테마 강조색 자동 사용",
   "lblColor": "바 색상",
-  "lblZindex": "z-index"
+  "lblZindex": "z-index",
+  "lblAnchor": "고정 기준",
+  "hintAnchor": "(nav 등 선택자)",
+  "reset": "초기화",
+  "hintColor": "(비우면 테마 강조색)",
+  "lblNav": "상단 고정 nav (데모)"
 }

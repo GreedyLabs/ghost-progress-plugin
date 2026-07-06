@@ -33,7 +33,7 @@
   "bodyOptions": "Everything is configured with data-* attributes on the script tag: the content selector, the position, the height, and the z-index:",
   "bodyCustomize": "The bar color and thickness are adjustable. Every class and CSS variable is namespaced under greedylabs-ghost-progress, so it never clashes with your theme.",
   "bodyColor": "The fill follows your Ghost theme accent (--ghost-accent-color) by default; set data-color or override the CSS variables to change it. The unread track is transparent by default, so give it a color to make the bar visible even at 0%:",
-  "bodyPosition": "Use data-position for top or bottom, and data-height for the thickness in pixels. The bar reaches 0% when the article top meets the top of the viewport, and 100% when its bottom meets the bottom.",
+  "bodyPosition": "Use data-position for top or bottom, and data-height for the thickness in pixels. The bar reaches 0% when the article top meets the top of the viewport, and 100% when its bottom meets the bottom. Give data-anchor a selector to pin the bar to that element (for example a top nav) instead of the viewport edge. When the selector is empty, matches nothing, or is hidden (as on mobile), the bar falls back to the viewport edge.",
   "bodyClosing": "ghost-progress-plugin is open source under the MIT license; the code and issues live on GitHub. Try the options in the left panel and copy the embed snippet when you are happy. If it helped you, a coffee is always appreciated ☕.",
   "h_faq": "FAQ",
   "faqQ1": "Does it track the whole page or just the article?",
@@ -47,5 +47,10 @@
   "lblHeight": "Height (px)",
   "lblAutoColor": "Use the Ghost theme accent automatically",
   "lblColor": "Bar color",
-  "lblZindex": "Z-index"
+  "lblZindex": "Z-index",
+  "lblAnchor": "Anchor",
+  "hintAnchor": "(selector, e.g. a nav)",
+  "reset": "Reset",
+  "hintColor": "(empty: theme accent)",
+  "lblNav": "Fixed top nav (demo)"
 }

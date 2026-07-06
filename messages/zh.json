@@ -33,7 +33,7 @@
   "bodyOptions": "所有行为都通过脚本标签上的 data-* 属性配置：可设置正文选择器、位置、粗细和 z-index：",
   "bodyCustomize": "进度条的颜色和粗细都可自由调整。所有类名和 CSS 变量都以 greedylabs-ghost-progress 命名空间隔离，绝不会与你的主题冲突。",
   "bodyColor": "填充色默认跟随 Ghost 主题强调色（--ghost-accent-color）。要更改，可设置 data-color 或覆盖 CSS 变量。未读部分的轨道默认透明，若想在 0% 时也能看到进度条，请给轨道设置颜色：",
-  "bodyPosition": "用 data-position 设置顶部或底部，data-height 设置粗细(px)。当文章顶部到达视口顶部时为 0%，底部到达视口底部时为 100%。",
+  "bodyPosition": "用 data-position 设置顶部或底部，data-height 设置粗细(px)。当文章顶部到达视口顶部时为 0%，底部到达视口底部时为 100%。 为 data-anchor 指定选择器，可让进度条贴靠该元素(如顶部导航)而非视口边缘。当选择器为空、无匹配或被隐藏(例如在移动端)时，进度条会回退到视口边缘。",
   "bodyClosing": "ghost-progress-plugin 是 MIT 许可的开源项目，代码与问题反馈都在 GitHub 上。在左侧面板调整选项，满意后复制嵌入代码即可。如果它帮到了你，欢迎请我喝杯咖啡 ☕。",
   "h_faq": "常见问题",
   "faqQ1": "它以整页为准还是以文章为准？",
@@ -47,5 +47,10 @@
   "lblHeight": "粗细(px)",
   "lblAutoColor": "自动使用 Ghost 主题强调色",
   "lblColor": "进度条颜色",
-  "lblZindex": "z-index"
+  "lblZindex": "z-index",
+  "lblAnchor": "锚点",
+  "hintAnchor": "(选择器，如导航栏)",
+  "reset": "重置",
+  "hintColor": "(留空则用主题强调色)",
+  "lblNav": "顶部固定导航 (演示)"
 }
